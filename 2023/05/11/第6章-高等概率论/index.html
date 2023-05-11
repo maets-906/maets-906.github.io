@@ -1,0 +1,607 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>第6章 高等概率论 | Cutedog</title><meta name="author" content="cutedog"><meta name="copyright" content="cutedog"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第6章 高等概率论[toc] 6.1 互补事件对于包含两个事件以上的事件集，如果事件集中至少有一个事件发生，我们称这些事件为互补事件。比如：  对于事件集{温度低于60℃，温度高于90℃}，这些事件不是互补事件，因为温度有可能介于60℃和90℃之间。事实上，这两个事件是互斥事件（mutually exhaustive），因为温度不可能同时低于60℃、高于90℃。 掷骰子事件集{1，2，3，4，5，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第6章 高等概率论">
+<meta property="og:url" content="http://example.com/2023/05/11/%E7%AC%AC6%E7%AB%A0-%E9%AB%98%E7%AD%89%E6%A6%82%E7%8E%87%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Cutedog">
+<meta property="og:description" content="第6章 高等概率论[toc] 6.1 互补事件对于包含两个事件以上的事件集，如果事件集中至少有一个事件发生，我们称这些事件为互补事件。比如：  对于事件集{温度低于60℃，温度高于90℃}，这些事件不是互补事件，因为温度有可能介于60℃和90℃之间。事实上，这两个事件是互斥事件（mutually exhaustive），因为温度不可能同时低于60℃、高于90℃。 掷骰子事件集{1，2，3，4，5，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg">
+<meta property="article:published_time" content="2023-05-11T14:49:31.000Z">
+<meta property="article:modified_time" content="2023-05-11T14:51:45.827Z">
+<meta property="article:author" content="cutedog">
+<meta property="article:tag" content="数据科学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/05/11/%E7%AC%AC6%E7%AB%A0-%E9%AB%98%E7%AD%89%E6%A6%82%E7%8E%87%E8%AE%BA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第6章 高等概率论',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-11 22:51:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Cutedog"><span class="site-name">Cutedog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">第6章 高等概率论</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-11T14:49:31.000Z" title="发表于 2023-05-11 22:49:31">2023-05-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-11T14:51:45.827Z" title="更新于 2023-05-11 22:51:45">2023-05-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">9.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>32分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="第6章 高等概率论"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="第6章-高等概率论"><a href="#第6章-高等概率论" class="headerlink" title="第6章 高等概率论"></a>第6章 高等概率论</h3><p>[toc]</p>
+<h4 id="6-1-互补事件"><a href="#6-1-互补事件" class="headerlink" title="6.1 互补事件"></a>6.1 互补事件</h4><p>对于包含两个事件以上的事件集，如果事件集中至少有一个事件发生，我们称这些事件为互补事件。比如：</p>
+<ul>
+<li>对于事件集{温度低于60℃，温度高于90℃}，这些事件不是互补事件，因为温度有可能介于60℃和90℃之间。事实上，这两个事件是<strong>互斥事件（mutually exhaustive）</strong>，因为温度不可能同时低于60℃、高于90℃。</li>
+<li>掷骰子事件集{1，2，3，4，5，6}是互补事件，因为这些事件是所有骰子可能出现的点数骰子点数肯定是其中之一。</li>
+</ul>
+<h4 id="6-2-重温贝叶斯思想"><a href="#6-2-重温贝叶斯思想" class="headerlink" title="6.2 重温贝叶斯思想"></a>6.2 重温贝叶斯思想</h4><p>简单来说，当我们讨论贝叶斯时，我们关注以下3个事情和它们之间的关系：</p>
+<ul>
+<li>先验分布（prior distribution）</li>
+<li>后验分布（posterior distribution）</li>
+<li>似然度（likelihood）</li>
+</ul>
+<p>通常来讲，我们更关心后验分布，因为它是我们想知道的答案。</p>
+<p>另一种理解贝叶斯思想的方法是，数据会影响我们的判断。我们有一个先验概率，或者有一个关于假设朴素的想法，然后根据历史数据，得出该假设的后验概率。</p>
+<h5 id="6-2-1-贝叶斯定理"><a href="#6-2-1-贝叶斯定理" class="headerlink" title="6.2.1 贝叶斯定理"></a>6.2.1 贝叶斯定理</h5><p>贝叶斯定理是贝叶斯推理的重要结果。下面我们将介绍它的推导过程。回忆我们之前介绍过的定义：</p>
+<ul>
+<li>P(A)=事件A发生的概率。</li>
+<li>P(A|B)=事件B发生的前提下，事件A发生的概率。</li>
+<li>P(A,B)=P(A $\cap$ B)=事件A和事件B同时发生的概率。</li>
+<li>P(A,B)=P(A $\cap$ B)=P(A)×P(B|A)。</li>
+</ul>
+<p><strong>最后一个公式指，事件A和事件B同时发生的概率，等于事件A发生的概率乘以事件A发生的前提下事件B发生的概率。这个公式就是贝叶斯定理的由来。</strong></p>
+<p>已知：<br>$$<br>P(A,B)=P(A)·P(B|A)<br>\<br>P(B,A)=P(B)·P(A|B)<br>\<br>P(A,B)=P(B,A)<br>$$<br>因此：<br>$$<br>P(B)·P(A|B)=P(A)·P(B|A)<br>$$<br>两边同时除以P(B)后即得到贝叶斯定理，如下所示：<br>$$<br>P(A|B)={P(A)×P(B|A)\over P(B)}<br>$$<br>我们还可以尝试从<strong>假设（hypothesis）</strong>和<strong>数据（data）</strong>的角度看待贝叶斯定理。如果用D表示收集的数据，H表示你的初始假设，<font color='red'>贝叶斯定理可以被理解为求解P(H|D)，即在给定数据D的前提下，初始假设成立的概率</font>，用公式表示为：<br>$$<br>P(H|D)={P(D|H)P(H)\over P(D)}<br>$$</p>
+<blockquote>
+<p>我们有一个初始假设H，收集数据（Data）或证据（Evidence）后，更新（update）我们的看法，即P(H|D)</p>
+</blockquote>
+<p>其中：</p>
+<ul>
+<li>P(H)指在收集数据前，假设发生的概率，称为先验概率；</li>
+<li>P(H|D)是待求解的概率，指在收集数据后，假设发生的概率，称为后验概率；</li>
+<li>P(D|H)是给定假设下，数据发生的概率，称为似然度；</li>
+<li>P(D)指在<strong>任何</strong>假设下，数据发生的概率，称为标准化常量。</li>
+</ul>
+<p>这一思想已经离机器学习和预测分析不远了。<font color='red'><strong>在很多案例中，当我们做预测分析时，指的正是根据已有数据预测未来。</strong></font>用术语表示，假设H是待预测的结果，P(H|D)可以理解为：在给定数据的前提下，假设H发生的概率是多少？</p>
+<p>下面我们通过一个例子演示贝叶斯定理如何在工作场合中发挥作用。</p>
+<p>假设有Lucy和Avinash两名员工同时为公司撰写博客。根据历史数据，你对Lucy 80%的文章非常满意，但只对Avinash 50%的文章表示满意。某天上午，一篇没有署名的新文章放在你的办公桌前。你非常喜欢这篇文章，给其评价A+。假设这两位作者发布文章的频率一致，请问这篇文章来自Avinash的概率是多少？</p>
+<p>在你彻底崩溃之前，让我们先像经验丰富的数学家那样，列出所有的已知信息。</p>
+<ul>
+<li>假设H：这篇文章的作者是Avinash；</li>
+<li>数据D：你喜欢这篇文章；</li>
+<li>P(H|D)：在已知你喜欢文章的前提下，作者是Avinash的概率；</li>
+<li>P(D|H)：在作者是Avinash的前提下，你喜欢该文章的概率；</li>
+<li>P(H)：这篇文章作者是Avinash的概率；</li>
+<li>P(D)：你喜欢这篇文章的概率。</li>
+</ul>
+<p>请注意，如果缺失上下文，以上某些变量可能没有任何意义。比如P(D)，它可以是你喜欢每一篇出现在办公室上的文章。这听起来非常诡异，但请相信我，在贝叶斯定理中，它是有意义的。同样地，P(D)并不依赖文章的来源，而是指对于任何来源的文章，你喜欢的概率。</p>
+<p>下面，我们尝试用贝叶斯定理计算P(H|D)。<br>$$<br>P(H|D)={P(D|H)P(H)\over P(D)}<br>$$<br>等等！我们有公式右边的值吗？当然有！如下所示。</p>
+<ul>
+<li>P(H)是该文章来自Avinash的概率。由于两位作者发布博客的频率相等，我们可以认为该文章有一半的概率来自Avinash。</li>
+<li>P(D|H)是你喜欢Avinash文章的比例，我们已知是50%。</li>
+<li>P(D)比较有意思。它指通常情况下，你喜欢一篇文章的概率。这意味着我们需要考虑文章来自Lucy等其他作者的情况。如果所有的假设能够组成一个<strong>套件（suite）</strong>，我们就可以使用上一章介绍的概率法则。我们将由完全互斥且互不相交的假设组成的集合称为套件。简单来说，对于套件中的假设，有且仅有一个假设发生。在本例中，两个假设分别是“文章来自Lucy”和“文章来自Avinash”。显然，这两个假设可以构成套件，因为：文章至少来自其中一人；文章最多来自其中一人；因此，只有一人是文章的作者。</li>
+</ul>
+<p>当我们有了套件，就可以使用乘法和加法法则，如下所示。<br>$$<br>D=(文章来自Avinash且你喜欢它)或(文章来自Lucy且你喜欢它)<br>\<br>P(D)=P(你喜欢它且文章来自Avinash)或P(你喜欢它且文章来自Lucy)<br>\<br>P(D)=P(文章来自Avinash)×P(你喜欢它|文章来自Avinash)+P(文章来自Lucy)×P(你喜欢它|文章来自Lucy)<br>\<br>P(D)=0.5×(0.5)+0.5×(0.8)=0.65<br>$$<br>不错，继续努力！下面可以完成我们的等式：<br>$$<br>P(H|D)={P(D|H)P(H)\over P(D)}<br>\<br>P(H|D)={0.5×0.5\over 0.65}=0.38<br>$$<br>因此，这篇文章来自Avinash的概率是0.38。P(H)=0.5和P(H|D)=0.38有点意思。P(H)=0.5指在没有任何数据的前提下，文章来自Avinash的概率是50%，和抛硬币得到正面或反面的概率一样。<strong>如果给定了数据</strong>（你是否喜欢该博客），<strong>假设发生的概率发生了变化</strong>，低于0.5。<strong>这正是贝叶斯思想的本质——根据先验假设和给定的数据，更新对事件的后验假设概率</strong>。</p>
+<blockquote>
+<p>3Blue1Brown：证据（Evidence）并不应直接决定你的看法，而是更新（update）看法。</p>
+</blockquote>
+<h5 id="3Blue1Brown的视频"><a href="#3Blue1Brown的视频" class="headerlink" title="3Blue1Brown的视频"></a>3Blue1Brown的视频</h5><p>3Blue1Brown的视频将有助于我们理解贝叶斯定理。</p>
+<p>视频地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1R7411a76r/?spm_id_from=333.999.0.0&vd_source=044c68705436aa8d8db56a6da7f2e195">【官方双语 贝叶斯定理，使概率论直觉化】</a></p>
+<p>在看公式和推理之前，我们先来看看Steve的故事：</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230323112507759.png" alt="image-20230323112507759"></p>
+<p>Steve是个图书管理员的概率更大还是Steve是个农民的概率更大呢？</p>
+<p>根据实验结果，当人们知道Steve是“一个温顺又井井有条的人”后，大多数人都会说他更有可能是图书管理员。</p>
+<p><strong>关键在于，在做判断的时候，没人把农民和图书管理员的比例信息考虑进去。</strong></p>
+<p><strong>在美国，农民与图书管理员的数量之比是20:1。</strong></p>
+<p>我们假设一个样本，这个样本中有10名图书管理员和200名农民。</p>
+<p>我们假设40%的图书管理员符合”温顺又井井有条“，而农民中符合条件的只有10%。那么就是说，在这个样本中，有4名图书管理员和20名农民符合条件。<br>$$<br>P(\textcolor{red}{Librarian}\quad given\quad \textcolor{blue}{description})<br>$$<br><strong>所以即使你认为符合这个描述的人是一个图书管理员的可能性是是一个农民的4倍，也抵不过农民的数量很多。</strong></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324152358213.png" alt="image-20230324152358213"></p>
+<p>你有一些<strong>假设（Hypothesis）</strong>，比如“Steve是一个图书管理员”。</p>
+<p>同时你得到了一些<strong>证据（Evidence）</strong>，或者称为<strong>数据（Data）</strong>，比如口头描述“Steve是一个温顺而又井井有条的人”。</p>
+<blockquote>
+<p>证据或者说数据可能是你用各种方法收集到的，比如找到了数据集、用爬虫爬取等等。</p>
+<p>3B1B的视频中称为证据，本书中称为数据。</p>
+</blockquote>
+<p>并且你想知道，在“你得到的证据是真的”的条件下，你的假设成立的概率。</p>
+<p>即：<br>$$<br>P(\textcolor{red}{Hypothesis}\quad given\quad \textcolor{blue}{the\quad evidence})<br>$$<br>用符号表示为P(H|E)。</p>
+<p>也就是说，我们把我们考虑的情况限制在了证据正确的可能性（条件）下。</p>
+<p>P(H)是在考虑新证据之前，假设成立的可能性。在我们的例子中，P(H)指Steve是一个图书管理员的概率，即1/21。这个数字来自人群中图书管理员和农民的比例。</p>
+<p>这个数字<strong>P(H)<strong>叫作</strong>先验概率（prior）</strong>。</p>
+<p>之后我们要考虑，图书管理员中符合这个描述的比例——在假设成立的情况下我们看到证据的概率。即P(E|H)。</p>
+<blockquote>
+<p>3B1B：当你看到这个竖杠，就表明我们只在讨论总概率空间中的一个有限的部分。</p>
+<p>在这个例子中，有限的部分就是左侧那一块，即假设成立（是图书管理员）的条件下，符合证据E的概率。</p>
+</blockquote>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324154624057.png" alt="image-20230324154624057"></p>
+<p><strong>P(E|H)<strong>被称为</strong>似然概率（likelihood）</strong>。</p>
+<p>类似的，你需要知道概率空间的另一侧包含多少证据——在假设不成立的情况下我们看到证据的概率，即P(E|┐H)。</p>
+<p>在本例中，P(E|H)=0.4，P(E|┐H)=0.1。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324155403927.png" alt="image-20230324155403927"></p>
+<p>我们想求的P(H|E)，即在证据为真的条件下是图书管理员假设成立的概率：<br>$$<br>P(\textcolor{red}H|\textcolor{blue}E)={total·P(\textcolor{red}H)·P(\textcolor{blue}E|\textcolor{red}H)\over total·P(\textcolor{red}H)·P(\textcolor{blue}E|\textcolor{red}H)+total·P(┐\textcolor{red}H)·P(\textcolor{blue}E|┐\textcolor{red}H)}<br>$$</p>
+<blockquote>
+<p>total指总人数，210人。</p>
+<p>total×P(H)得到的是图书管理员的数量，即总共有10个图书管理员。</p>
+<p>total×P(H)×P(E|H)，即图书管理员的数量×P(E|H)，指在概率空间/样本空间为图书管理员的条件下，E发生的概率（符合证据的概率）。</p>
+<p>total×P(┐H)，得到的是不是图书管理员，即农民的数量。</p>
+<p>total×P(┐H)×P(E|┐H)，指在概率空间不是图书管理员的条件下，E成立的概率。</p>
+<p>其实，这个过程在一步一步地限制概率空间/样本空间。以total×P(H)×P(E|H)为例，一开始的概率空间为总体，乘上P(H)后，概率空间由总体（图书管理员+农民）变为图书管理员，再乘上P(E|H)，指的是，在概率空间为图书管理员的条件下，符合证据E的概率。</p>
+</blockquote>
+<p>total可以被约分掉。</p>
+<p>最终得到的结果即：<br>$$<br>P(\textcolor{red}H|\textcolor{blue}E)={P(\textcolor{red}H)·P(\textcolor{blue}E|\textcolor{red}H)\over P(\textcolor{red}H)·P(\textcolor{blue}E|\textcolor{red}H)+P(┐\textcolor{red}H)·P(\textcolor{blue}E|┐\textcolor{red}H)}<br>$$<br>这就是<strong>贝叶斯定理（Bayes’s theorem）</strong>。</p>
+<p>多数情况下，你会看到分母简写成P(E)，实际上，你如果要算P(E)，你还是需要把它拆分成假设成立和假设不成立两部分来计算。</p>
+<p>最终计算出的结果<strong>P(H|E)<strong>叫作</strong>后验概率（posterior）</strong>。也就是你看到证据后，你对假设成立与否的看法。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324172146456.png" alt="image-20230324172146456"></p>
+<p>我们把整个概率空间想象成一个1×1的正方形，之后，任何事件都对应概率空间的一个子集，并且<strong>事件发生的概率就是子集的面积</strong>。</p>
+<p>从几何的角度去考虑，P(H)×P(E|H)，也就是左边矩形的宽度乘以高度，即左边矩形的面积。</p>
+<p>现在试着考虑一个更大的问题：如何让概率更直观。</p>
+<p>Kahneman和Tversky做了另一个实验（Steve的问题就是他们做的一个实验）。</p>
+<p>当人们听到描述后，被问到以下哪个选项可能性更大：</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324172953460.png" alt="image-20230324172953460"></p>
+<p>85%的实验者说后者更有可能！</p>
+<p>但是实际上，选项2是选项1的子集！</p>
+<p>更有趣的是，只要我们对这个问题简单地组织一下语言，错误率就能从85% 讲到0。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324173146090.png" alt="image-20230324173146090"></p>
+<p>下面是对直觉（直观感受）的准确度排名：</p>
+<p>100个当中有40个＞40%＞0.4＞“What’s more likely …?”</p>
+<p>3Blue1Brown：人们认为概率论就是研究“不确定”，确实，概率论就是这样应用在科学上的。但是概率的数学本质确实就是数学上所说的比例，这些公式也都是由数学比例构成的。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324173536483.png" alt="image-20230324173536483"></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/382e46ac247c106d22aebf9591f112e.jpg" alt="382e46ac247c106d22aebf9591f112e"></p>
+<h5 id="一道习题"><a href="#一道习题" class="headerlink" title="一道习题"></a>一道习题</h5><p>问题：假设人群中肺炎的感染率为0.1%，肺炎检测的正确率为99%，一个人肺炎检测结果为阳性，求他患有肺炎的概率。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/4c0cb8da49331c5bb2fe7d6755ba08d.jpg" alt="4c0cb8da49331c5bb2fe7d6755ba08d"></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/66214fcddaa30284a4fdee9db0bdb0e.jpg" alt="66214fcddaa30284a4fdee9db0bdb0e"></p>
+<h5 id="寻找黄金船"><a href="#寻找黄金船" class="headerlink" title="寻找黄金船"></a>寻找黄金船</h5><p>3Blue1Brown在视频里提到，在20世纪80年代，由Tommy Thompson带领的一支队伍利用贝叶斯搜寻策略，协助他们发现了一艘一个半世纪前的沉船，以今天的价格计算，这艘船装了价值7亿美元的黄金！</p>
+<p>视频地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1y44y1v7ee/?spm_id_from=333.999.0.0&vd_source=044c68705436aa8d8db56a6da7f2e195">【假装讲课】找丢失的船时如何省力</a></p>
+<p>背景故事：</p>
+<p>有一艘船载满了黄金，有一天该船按照既定航线航行时，突然失去了联络。我们应该如何派出搜救队/打捞队？</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324201502394.png" alt="image-20230324201502394"></p>
+<p><strong>预估沉船位置可能性</strong></p>
+<p>专业人士可能会考虑洋流、船长开船习惯、风向等因素，来做出一个推测。</p>
+<p>我们可以把推测出的位置（位置范围）标在地图上面。</p>
+<p>即，我们有了P(船在这里)</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324201833825.png" alt="image-20230324201833825"></p>
+<p><strong>搜寻到沉船的容易程度</strong></p>
+<p>这个船即使就在搜寻的位置，也有可能受海底深浅、水流强弱、与岸边距离等因素影响而无法找到。</p>
+<p>用公式表达为：<br>$$<br>P(找得到|船在这里)<br>$$<br>然后我们一样将它画在地图上。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324202209127.png" alt="image-20230324202209127"></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324202322583.png" alt="image-20230324202322583"></p>
+<p>根据条件概率公式，我们将上面两个内容乘一下。<br>$$<br>P(找得到船)=P(沉船在这里)×P(找得到|沉船在这里)<br>$$<br>我们从P(找得到船)最大的地方开始找。</p>
+<p>我们把刚才两个概率相乘的结果标在地图上，然后挑选概率最大的那个点开始寻找。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324202927399.png" alt="image-20230324202927399"></p>
+<p>我们如果找到了，就可以直接宣布成功。如果没找到，就更新一下找得到船的概率地图，再从更新后概率最高的地方继续寻找。</p>
+<p>为什么一定要更新概率地图呢？不可以接着从概率第二高的地方找下去吗？</p>
+<p>这里的问题在于，我们即使找过了第一个地方并且没找到，船也仍然有可能在第一个地方，只不过我们没找到而已。</p>
+<p>所以我们需要确定第一个地方到底值不值得我们继续寻找。<br>也就是计算一下，我们没找到的条件下，船在这里的概率。</p>
+<p>那么根据贝叶斯定理：<br>$$<br>P(沉船在这里|没找到)={P(没找到|沉船在这里)·P(沉船在这里)\over P(没找到)}={P(没找到|沉船在这里)·P(沉船在这里)\over P(没找到&amp;沉船在这里)+P(没找到&amp;沉船不在这里)}<br>$$<br><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/091f23f86b00e0f991ae875ca822549.jpg" alt="091f23f86b00e0f991ae875ca822549"></p>
+<p>我们在黄圈内没找到船但是船还在那里的概率已经用已知量表示出来了。</p>
+<p>我们现在需要把更新后的概率更新到原来的概率地图上，然后再找到概率最高的点作为下一次找船的地点。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230324213229873.png" alt="image-20230324213229873"></p>
+<h5 id="6-2-2-贝叶斯定理的更多应用"><a href="#6-2-2-贝叶斯定理的更多应用" class="headerlink" title="6.2.2 贝叶斯定理的更多应用"></a>6.2.2 贝叶斯定理的更多应用</h5><p>通常情况下，当我们需要依据数据和概率快速做出决策时，贝叶斯定理就能派上用场。大部分推荐引擎，比如Netflix，都或多或少地使用了贝叶斯定理。我们很容易就能想通其中的道理。</p>
+<p>在简化的场景中，假设Netflix只有10种类型影片可供选择。如果没有任何用户数据，用户喜欢喜剧类型影片的概率是1/10。</p>
+<p>当用户给喜剧电影5星评价后（满分5星），请问Netflix猜测用户喜欢另一部喜剧电影的概率是多少？显然这个概率将比随机猜测概率10%高。</p>
+<p>下面我们将在更多数据和案例中应用贝叶斯定理。</p>
+<p><strong>案例：泰坦尼克</strong></p>
+<p>一个有名的案例是研究1912年沉没的泰坦尼克号数据。我们将使用概率论方法，研究乘客生还情况是否具有人口统计学特征。换句话说，我们想从数据集中抽离出核心特征，寻找哪种类型的乘客将在此次灾难中生还。</p>
+<p>首先，我们加载泰坦尼克号数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">titanic=pd.read_csv(<span class="string">&#x27;data/titanic.csv&#x27;</span>)  <span class="comment">#read in a csv</span></span><br><span class="line">titanic=titanic[[<span class="string">&#x27;Sex&#x27;</span>,<span class="string">&#x27;Survived&#x27;</span>]]      <span class="comment">#the Sex and Survived column</span></span><br><span class="line">titanic.head()</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Sex</th>
+<th>Survived</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>male</td>
+<td>no</td>
+</tr>
+<tr>
+<td>1</td>
+<td>female</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>female</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>3</td>
+<td>female</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>4</td>
+<td>male</td>
+<td>no</td>
+</tr>
+</tbody></table>
+<p>在表格中，每行代表一名乘客。我们提取了两个重要特征：性别（Sex）和是否幸存（Survived）。第1行表示一名没有幸存的男性乘客，第4行（Python索引为3）表示一名幸存的女性乘客。</p>
+<p>我们先从简单的概率入手。首先计算在不考虑性别的情况下，每名乘客的生还概率。方法是计算Survived列值为yes的行数，再除以总行数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num_rows=<span class="built_in">float</span>(titanic.shape[<span class="number">0</span>])    <span class="comment">#==891 rows</span></span><br><span class="line">p_survived=(titanic.Survived==<span class="string">&quot;yes&quot;</span>).<span class="built_in">sum</span>()/num_rows  <span class="comment">#==.38</span></span><br><span class="line">p_notsurvived=<span class="number">1</span>-p_survived                           <span class="comment">#==.61</span></span><br></pre></td></tr></table></figure>
+
+<p>请注意，我们已经有P(Survived)，可以根据互斥法则计算P(Died)。下面，我们分别计算男性和女性的生还率：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p_male=(titanic.Sex==<span class="string">&quot;male&quot;</span>).<span class="built_in">sum</span>()/num_rows  <span class="comment">#==.65</span></span><br><span class="line">p_female=<span class="number">1</span>-p_male                            <span class="comment">#==.35</span></span><br></pre></td></tr></table></figure>
+
+<p>现在，请问自己一个问题：性别是否是影响生还率的重要特征？为了回答这个问题，我们需要计算P(Survived|Female)，即已知乘客为女性的情况下的生还率。为此，我们将生还的女性乘客数量除以女性乘客总数，公式如下：<br>$$<br>P(生还|女性)={P(女性且生还)\over P(女性)}<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">number_of_women=titanic[titanic.Sex==<span class="string">&#x27;female&#x27;</span>].shape[<span class="number">0</span>]  <span class="comment">#==314</span></span><br><span class="line">women_who_lived=titanic[(titanic.Sex==<span class="string">&#x27;female&#x27;</span>)&amp;(titanic.Survived==<span class="string">&#x27;yes&#x27;</span>)].shape[<span class="number">0</span>] <span class="comment">#==233</span></span><br><span class="line">p_survived_given_woman=women_who_lived / <span class="built_in">float</span>(number_of_women)</span><br><span class="line">p_survived_given_women  <span class="comment">#==.74</span></span><br></pre></td></tr></table></figure>
+
+<p>女性的生还率0.74远大于全体的生还率0.38！这说明性别是影响生还的重要特征。</p>
+<p><strong>案例：医疗案例</strong></p>
+<p>贝叶斯定理的经典用途之一是医学实验分析。在学校和工作场所，对违禁药物的检查已经越来越普遍。检测公司认为自己的检查方法非常灵敏，（基本上）只要使用了违禁药物，检测结果都会呈阳性。同时，他们声称检测也具有较高特异性，如果未使用违禁药物，检测结果将呈阴性。</p>
+<p>假设平均来看，药物检测的敏感性为60%，特异性为99%。也就是说，如果雇员使用了违禁药物，检测结果有60%的概率呈阳性；如果雇员未使用违禁药物，检测结果有99%的概率呈阴性。</p>
+<p>假设我们在违禁药物使用率为5%的工作场所进行检测，我们想知道如果检测结果是阳性，那么雇员使用违禁药物的概率是多少？</p>
+<p>按照贝叶斯定理，我们需要计算使用了违禁药物且检测结果为阳性的概率：</p>
+<ul>
+<li>用D表示使用了违禁药物；</li>
+<li>用E表示检测结果为阳性；</li>
+<li>用N表示未使用违禁药物。</li>
+<li>待求解的对象是P(D|E)。</li>
+</ul>
+<p>根据贝叶斯定理：<br>$$<br>P(D|E)={P(E|D)P(D)\over P(E)}<br>$$<br>先验概率P(D)是在检测之前，雇员使用违禁药物的概率5%。似然度P(E|D)是使用了违禁药品且检测结果为阳性的概率，即检测的敏感性60%。常数P(E)则比较特殊。我们需要考虑两种可能性：P(E且D)和P(E且N)，即还要考虑到雇员未使用违禁药物，但检测结果为阳性的错误检测情况。<br>$$<br>P(E)=P(E且D)+P(E且N)<br>\<br>P(E)=P(D)P(E|D)+P(N)P(E|N)<br>\<br>P(E)=0.05×0.6+0.95×0.01<br>\<br>P(E)=0.0395<br>$$<br>因此，之前的公式变为：<br>$$<br>P(D|E)={0.6×0.05\over 0.0395}=0.76<br>$$<br>也就是说，对于检测结果为阳性的违禁药物使用者，大约有1/4的人是无辜的！</p>
+<h4 id="6-3-随机变量"><a href="#6-3-随机变量" class="headerlink" title="6.3 随机变量"></a>6.3 随机变量</h4><p><strong>随机变量（random variable）</strong>通常用实数表示概率事件。在之前的案例中，我们认为变量（在数学和程序语言中）是固定值。在数学中，我们可以用h表示直角三角形的斜边长。在Python中用x表示5（x=5）。以上两个变量每次只能是唯一值。但是，随机变量具有随机性，随机变量的值和它的名称一样是变化的，随环境而改变！</p>
+<p>但是和变量一样，随机变量也用来存储值，两者最大的区别在于随机变量的取值具有不确定性，完全取决于所处的环境。</p>
+<p>如果随机变量有多个取值，那我们如何追踪每个值呢？答案是随机变量的每个值都对应一个百分比。也就是说，对于随机变量可能出现的每一个值，都有唯一一个与之对应的概率。</p>
+<p>我们可以计算出随机变量的概率分布，观察随机变量可能的取值和概率。我们通常用大写字母（经常用X）表示随机变量，比如：</p>
+<ul>
+<li>X=掷骰子的结果。</li>
+<li>Y=某公司今年的销售额。</li>
+<li>Z=应聘者的编程测试得分。</li>
+</ul>
+<p>事实上，随机变量是将样本空间（包含了所有可能的结果）中的值映射到概率（0~1）的函数，用公式表达如下：<br>$$<br>f(事件)=概率<br>$$<br>函数将给出每一个事件对应的概率。随机变量主要有两种类型：<strong>离散型（discrete）</strong>和<strong>连续型（continuous）</strong>。</p>
+<h5 id="6-3-1-离散型随机变量"><a href="#6-3-1-离散型随机变量" class="headerlink" title="6.3.1 离散型随机变量"></a>6.3.1 离散型随机变量</h5><p>离散型随机变量的取值范围是有限的，比如掷骰子的结果。<br>$$<br>X=每次掷骰子的结果<br>$$</p>
+<table>
+<thead>
+<tr>
+<th>随机变量值</th>
+<th>X=1</th>
+<th>X=2</th>
+<th>X=3</th>
+<th>X=4</th>
+<th>X=5</th>
+<th>X=6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>概率</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+</tr>
+</tbody></table>
+<p>我们用大写X表示随机变量，这是随机变量最常见的符号，同时还需注意到每个随机变量都有一个与之对应的概率。</p>
+<p>随机变量有很多属性，比如<strong>期望（expected value）</strong>和<strong>方差（variance）</strong>。我们通常用<strong>概率质量函数（probability mass function,PMF）</strong>描述离散随机变量的分布情况，表示方法如下：<br>$$<br>P(X=x)=PMF<br>$$<br>对于掷骰子事件：</p>
+<p>P(X=1)=1/6，P(X=5)=1/6</p>
+<p>对于以下两种离散型随机变量：</p>
+<ul>
+<li>调查问卷的结果（范围是1~10）</li>
+<li>CEO是否会在年内辞职（非真即假）</li>
+</ul>
+<p>随机变量的期望是指大量随机变量样本的平均值，有时也被称为变量的平均值。下面用Python代码模拟掷骰子事件。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">random_variable_of_dice_roll</span>():</span><br><span class="line">    <span class="keyword">return</span> random.randint(<span class="number">1</span>,<span class="number">7</span>) <span class="comment">#a range of (1,7) #includes 1,2,3,4,5,6,but NOT 7</span></span><br></pre></td></tr></table></figure>
+
+<p>下面我们掷100次骰子，观察其平均值的大小。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">trials=[]</span><br><span class="line">num_trials=<span class="number">100</span></span><br><span class="line"><span class="keyword">for</span> trial <span class="keyword">in</span> <span class="built_in">range</span>(num_trials):</span><br><span class="line">    trials.append(random_variable_of_dice_roll())</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>(trials)/<span class="built_in">float</span>(num_trials))  <span class="comment">#==3.77</span></span><br></pre></td></tr></table></figure>
+
+<p>掷100次骰子后的平均值是3.77。下面增大掷骰子的次数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">num_trials=<span class="built_in">range</span>(<span class="number">100</span>,<span class="number">10000</span>,<span class="number">10</span>)</span><br><span class="line">avgs=[]</span><br><span class="line"><span class="keyword">for</span> num_trial <span class="keyword">in</span> num_trials:</span><br><span class="line">    trials=[]</span><br><span class="line">    <span class="keyword">for</span> trial <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,num_trial):</span><br><span class="line">        trials.append(random_variable_of_dice_roll())</span><br><span class="line">    avgs.append(<span class="built_in">sum</span>(trials)/<span class="built_in">float</span>(num_trial))</span><br><span class="line">plt.plot(num_trials,avgs)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Number of Trials&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Average&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230326175807622.png" alt="image-20230326175807622"></p>
+<p>上图是掷骰子的次数和平均值之间的关系。图中左侧显示，如果掷骰子的次数只有100 次，那么很难保证平均值接近3.5。然而，如果连续掷10000次骰子，平均值明显越来越接近3.5。</p>
+<p>对于离散型随机变量，我们用以下公式计算期望：<br>$$<br>期望=E[X]=μ_X=∑x_ip_i<br>$$<br>其中，$x_i$是第i次的结果，$p_i$是第i次的概率。</p>
+<p>对于掷骰子事件，我们可以计算其期望为：<br>$$<br>{1\over 6}(1)+{1\over 6}(2)+{1\over 6}(3)+{1\over 6}(4)+{1\over 6}(5)+{1\over 6}(6)=3.5<br>$$<br>计算结果显示，我们每掷一次骰子，预期得到的值是3.5。然而，骰子并没有3.5，期望值好像是没有意义的！实际上，如果考虑到研究背景——掷很多次骰子，3.5就是有意义的数值。因为如果我们掷10000次骰子，骰子的平均点数确实接近3.5，图6.1就是最好的证明。</p>
+<p>随机变量的期望并不能描述随机变量所有的特征，因此我们需要引入方差的概念。</p>
+<p>方差用来描述随机变量的离散程度，它量化了变量值的不确定性。离散型随机变量的方差公式如下：<br>$$<br>方差=V[X]=σ^2_X=∑(x_i-μ_x)^2p_i<br>$$<br>其中，$x_i$和$p_i$，与之前的含义相同，$μ_x$是随机变量的期望。公式中还出现了西格玛σ，它是随机变量的标准差，等于方差的平方根。</p>
+<p>方差可以被看作增减指标。假设有人告诉你可以从扑克比赛中赢得100美元，你会非常高兴。如果他继续说：“你可能赢得100美元，加减80美元。”那么你的预期回报将是100加减80，浮动范围非常广。这会让风险厌恶者慎重考虑是否需要加入比赛。</p>
+<p>下面我们介绍更复杂的离散型随机变量案例。假设你的团队用李克特度量法（Likert Scale）评估新产品是否会成功，其中用0表示彻底失败，4表示获得巨大成功。你们根据新产品的用户测试结果和历史产品表现预测新产品的成功概率。</p>
+<p>首先，我们需要定义随机变量。假设随机变量X表示产品成功情况，由于X的值只有5种可能：0、1、2、3或4，所以X是离散型随机变量。表6.3是X的概率分布。请注意，每一列代表随机变量可能的取值和它对应的概率。</p>
+<table>
+<thead>
+<tr>
+<th>随机变量值</th>
+<th>X=0</th>
+<th>X=1</th>
+<th>X=2</th>
+<th>X=3</th>
+<th>X=4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>概率</td>
+<td>0.02</td>
+<td>0.07</td>
+<td>0.25</td>
+<td>0.4</td>
+<td>0.26</td>
+</tr>
+</tbody></table>
+<p>比如，该产品有2%的概率彻底失败，26%的概率获得巨大成功！我们可以计算X的期望：<br>$$<br>E[X]=0×(0.02)+1×(0.07)+2×(0.25)+3×(0.4)+4×(0.26)=2.81<br>$$<br>因此，管理层可以认为该产品成功的期望值是2.81。但是，仅有这个数字还不足以下结论。当我们有多个项目备选时，期望可能是较好的对比指标。然而，当我们仅有一个项目时，我们需要更多的衡量指标。</p>
+<p>下面，我们将计算X的方差，如下：<br>$$<br>V[X]=(0-2.81)^2×0.02+(1-2.81)^2×0.07+(2-2.81)^2×0.25+(3-2.81)^2×0.4+(4-2.81)^2×0.26=0.97<br>$$<br>由此可知标准差等于0.97。</p>
+<p>因此，我们可以认为新产品获得成功的期望是2.81加减0.97，即1.84~3.78。</p>
+<p>你可能在想，好吧，这个新产品最好的得分是3.78，最差的得分是1.84。然而并不是这样！<strong>新产品既可能是4分，也可能低于1.8分。</strong>为了证明这一点，我们计算P(X≥3)。</p>
+<p>P(X≥3)指随机变量值大于或等于3的概率。换句话说，新产品的得分大于或等于3的概率是多少？<br>$$<br>P(X≥3)=P(X=3)+P(X=4)=0.66=66%<br>$$<br>这意味着新产品有66%的概率得分是3或4。</p>
+<p>另一种计算它的方式是根据共轭法则，如下：<br>$$<br>P(X≥3)=1-P(X&lt;3)<br>$$<br>这个公式的意思是为了计算得分不低于3的概率，我们用1减去得分低于3的概率。只有当两个事件（X≥3和X&lt;3）是互补事件时，它才成立。</p>
+<p>P(X≥3)和P(X&lt;3)显然是互补事件，因为产品得分只能是以下两种情况之一：</p>
+<ul>
+<li>等于或大于3。</li>
+<li>小于3。</li>
+</ul>
+<p>我们还可以通过计算P(X&lt;3)检查等式是否成立：<br>$$<br>P(X&lt;3)=P(X=0)+P(X=1)+P(X=2)=0.02+0.07+0.25=0.34<br>\<br>1-P(X&lt;3)=1-0.34=0.66=P(X≥3)<br>$$<br>这说明X≥3和X&lt;3是互补事件。</p>
+<h5 id="排列组合公式"><a href="#排列组合公式" class="headerlink" title="排列组合公式"></a>排列组合公式</h5><p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/46b4eee6780276c8d107c99f84a7dee.jpg" alt="46b4eee6780276c8d107c99f84a7dee"></p>
+<h5 id="二项随机变量"><a href="#二项随机变量" class="headerlink" title="二项随机变量"></a>二项随机变量</h5><p>第一种离散型随机变量是<strong>二项随机变量（binomial random variables）</strong>。二项随机变量指重复观察某一试验，并统计试验结果为“成功（真）”的次数。</p>
+<p>在学习二项随机变量之前，我们需要知道什么是二项分布。二项分布需要满足以下4个条件：</p>
+<ul>
+<li>试验结果只有两种：成功或失败（发生或不发生，真或假）；</li>
+<li>试验结果是独立的，互不影响的；</li>
+<li>试验次数的固定的（固定样本大小）；</li>
+<li>每次试验成功的概率均为p。</li>
+</ul>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230326192654522.png" alt="image-20230326192654522"></p>
+<blockquote>
+<p>二项分布：n次伯努利事件，发生r次的概率</p>
+</blockquote>
+<p>$$<br>P(X=r)=C_n^r·p^r·(1-p)^{n-r}<br>$$</p>
+<p>下面我们用一个视频来帮助我们理解二项分布。</p>
+<p>视频地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16p4y1W7C2/?spm_id_from=333.999.0.0&vd_source=044c68705436aa8d8db56a6da7f2e195">十分钟理解二项分布</a></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/8995fb365b2800719a6b0626802d930.jpg" alt="8995fb365b2800719a6b0626802d930"></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/a99c2329c0cc7820a61c5d69de6dc7e.jpg" alt="a99c2329c0cc7820a61c5d69de6dc7e"></p>
+<p><strong>案例：餐馆生存概率</strong></p>
+<p>已知某城市餐馆开业首年的生存率是20%。假设今年有14家餐馆开业，请问1年后有4家餐馆生存下来的概率是多少？</p>
+<p>首先，我们需要验证这是一个二项分布试验：</p>
+<ul>
+<li><p>试验结果是餐馆继续营业或关门；</p>
+</li>
+<li><p>试验结果是独立的，互不影响——假设各餐馆之间不影响对方的生存概率；</p>
+</li>
+<li><p>试验次数是固定的——14家餐馆开业；</p>
+</li>
+<li><p>每次试验成功的概率都为p——生存率是20%。</p>
+</li>
+</ul>
+<p>我们已经知道两个参数n=14，p=0.2，下面将参数填进公式，如下：<br>$$<br>P(X=4)=C_{14}^4×0.2^4×0.8^{10}=0.17<br>$$<br>因此，1年之后有4家餐馆继续营业的概率是17%。</p>
+<p><strong>案例：血型</strong></p>
+<p>假设某对夫妻孩子血型为O的概率是25%。请问在他们的5个孩子中，有3个血型为O的概率是多少？</p>
+<p>我们用X表示孩子血型为O，其中n=5，p=0.25，那么：<br>$$<br>P(X=3)=C_5^3×0.25^3×0.75^{5-3}=0.087<br>$$<br>我们还可以计算随机变量值为0、1、2、3、4和5时对应的概率，了解它的概率分布。</p>
+<table>
+<thead>
+<tr>
+<th>随机变量值</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>概率</td>
+<td>0.23730</td>
+<td>0.39551</td>
+<td>0.26367</td>
+<td>0.08789</td>
+<td>0.01465</td>
+<td>0.00098</td>
+</tr>
+</tbody></table>
+<p>有了以上概率分布，我们就可以计算变量的期望和方差：<br>$$<br>期望=E[X]=μ_x=∑x_ip_i=1.25<br>\<br>方差=V[X]=σ^2_x=∑(x_i-μ_x)^2p_i=0.9375<br>$$<br>因此我们预计该家庭有1~2个孩子的血型为O型。</p>
+<p>如果我们想知道至少有3个孩子血型为O型的概率是多少，我们可以使用以下公式：<br>$$<br>P(X≥3)=P(X=5)+P(X=4)+P(X=3)=0.00098+0.01465+0.08789=0.103<br>$$<br>因此，该家庭有3个小孩的血型为O型的概率是10%。</p>
+<blockquote>
+<p>计算二项随机变量期望和方差的快捷方式如下。</p>
+<p>二项随机变量有特殊的计算期望和方差的方法。如果X是二项随机变量，那么：</p>
+<p>E[X]=np</p>
+<p>V[X]=np(1-p)</p>
+<p>对于上面的例子，我们可以使用以下公式计算期望和方差：</p>
+<p>E[X]=0.25×5=1.25</p>
+<p>V[X]=1.25×(0.75)=0.9375</p>
+</blockquote>
+<p>二项随机变量是计算二项分布试验成功次数的离散型随机变量。它在数据驱动的实验中具有重要作用，比如在给定转化率的前提下预测注册人数，或者预测股票价格下跌的幅度（别着急，我们随后会用更强大的模型预测股票价格的变化）。</p>
+<h5 id="几何随机变量"><a href="#几何随机变量" class="headerlink" title="几何随机变量"></a>几何随机变量</h5><p>第二种随机变量类型是<strong>几何随机变量（geometric random variables）</strong>。事实上，它和二项随机变量非常类似，适用的对象同样是重复发生的事件。两者的区别在于几何随机变量不再限制样本的大小。比如，对于之前的”血型”案例，我们不再限定只有5个孩子。相反，我们对试验的次数进行建模，计算第1次试验成功的概率。</p>
+<p>一般情况下，几何分布的事件或试验需要满足以下4个条件：</p>
+<ul>
+<li>试验结果只有两种：成功或失败（发生或不发生，真或假）；</li>
+<li>试验结果是独立的，互不影响的；</li>
+<li>试验次数不固定；</li>
+<li>每次试验成功的概率均为p。</li>
+</ul>
+<p><strong>请注意，除了第3个条件之外，其他条件和二项随机变量完全一致！</strong></p>
+<p>几何随机变量属于离散型随机变量，<strong>它用于计算试验第一次成功的概率</strong>。参数p表示每次试验成功的概率，（1-p）是每次试验失败的概率。</p>
+<p>几何随机变量的案例有：</p>
+<ul>
+<li><p>计算创业公司在得到第一笔风险投资前，需要和VC会面的次数；</p>
+</li>
+<li><p>计算掷硬币时得到第1个正面朝上的投掷次数。</p>
+</li>
+</ul>
+<p>几何随机变量的概率质量函数（PMF）如下：<br>$$<br>P(X=x)=(1-p)^{x-1}p<br>$$<br>简单概括，二项分布和几何分布的结果都只能是成功或失败两种。两者最大的不同是二项随机变量有固定的次数（记为n），几何随机变量没有固定的试验次数。相反，几何随机变量对第1次试验成功的概率进行建模——不考虑成功的真实含义。</p>
+<p><strong>案例：天气</strong></p>
+<p>假设4月每一天降雨的概率都是34%。请问4月4号之前下雨的概率是多少？</p>
+<p>根据已知条件，事件X是第1次降雨发生的日期，概率p等于0.34，(1-p)等于0.66，那么：<br>$$<br>P(X=8)=0.66^{8-1}×0.34=0.66^7×0.34=0.01855<br>$$<br>因此，4月4号之前下雨的概率等于：<br>$$<br>P(X≤4)=P(1)+P(2)+P(3)+P(4)=0.34+0.22+0.14+0.10=0.8<br>$$<br>因此，4月4号之前下雨的概率是80%。</p>
+<blockquote>
+<p>计算几何型随机变量期望和方差的快捷方式如下。</p>
+<p>几何随机变量同样有特殊的计算期望和方差的方法。如果X是几何型随机变量，那么：</p>
+<p>E[X]=1/p</p>
+<p>V[X]=(1-p)/$p^2$</p>
+</blockquote>
+<h5 id="泊松随机变量"><a href="#泊松随机变量" class="headerlink" title="泊松随机变量"></a>泊松随机变量</h5><p>第三种随机变量类型是<strong>泊松随机变量（poisson random variable）</strong>。泊松随机变量用于计算事件在特定时间段内发生的次数。假设根据历史数据，在某特定期间内，事件X 的平均发生次数是μ，那么泊松随机变量记为X=Poi(μ)。</p>
+<p>泊松分布是离散型概率分布，以下是两个泊松随机变量案例：</p>
+<ul>
+<li><p>根据网站历史表现，预测在1小时内网站访问者数量达到特定值的概率；</p>
+</li>
+<li><p>根据历史交通报告，预测某十字路口的车祸数量。</p>
+</li>
+</ul>
+<p>如果用X表示指定期间事件发生的次数，用λ表示给定期间内事件的平均发生次数，那么在给定期间内，事件发生x次的概率可以用以下公式表示：<br>$$<br>P(X=x)={e^{-λ}λ^x\over x!}<br>$$<br>其中，e是欧拉常数（2.718……）。</p>
+<p>我们用一个视频来看看泊松随机变量是怎么来的。</p>
+<p>视频地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1B54y1s7Ud/?share_source=copy_web&vd_source=9ad882ef81c9b1d3cfabb547c13d4168">泊松分布是怎么来的？应该怎么用？</a></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/6221180e7115f36473cad04bddc24f2.jpg" alt="6221180e7115f36473cad04bddc24f2"></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/0e8bd7343904086996b8f33618154d3.jpg" alt="0e8bd7343904086996b8f33618154d3"></p>
+<p><strong>案例：呼叫中心</strong></p>
+<p>已知呼叫中心接到的电话数量服从泊松分布，平均每小时5个电话。请问：在晚上10点～11点接到6个电话的概率是多少？</p>
+<p>求解该问题之前，我们先写下所有已知的信息，随机变量X指晚上10点～11点接到电话的数量，λ等于5。请注意，平均值5不是凭空瞎猜的，而是来自对过去这个时间段电话数量的分析。我们需要通过各种方法对平均值进行估计，以便生成泊松随机变量进行预测。</p>
+<p>继续求解我们的问题：<br>$$<br>P(X=6)={e^{-5}5^6\over6!}=0.146<br>$$<br>因此，晚上10点~11点接到6个电话的概率是14.6%。</p>
+<blockquote>
+<p>计算泊松随机变量期望和方差的快捷方式如下。</p>
+<p>泊松随机变量同样有特殊的计算期望和方差的方法。如果X是泊松随机变量，那么：</p>
+<p>E[X]=λ</p>
+<p>V[X]=λ</p>
+</blockquote>
+<h5 id="6-3-2-连续型随机变量"><a href="#6-3-2-连续型随机变量" class="headerlink" title="6.3.2 连续型随机变量"></a>6.3.2 连续型随机变量</h5><p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230327171717010.png" alt="image-20230327171717010"></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230327171800339.png" alt="image-20230327171800339"></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230327171816564.png" alt="image-20230327171816564"></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230327171830966.png" alt="image-20230327171830966"></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230327171848694.png" alt="image-20230327171848694"></p>
+<p>我们仍然可以通过一个视频来进一步了解连续型随机变量。</p>
+<p>视频地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16L4y1q7MW/?spm_id_from=333.999.0.0&vd_source=044c68705436aa8d8db56a6da7f2e195">【概率论与数理统计】一个视频让你明白分布函数，概率密度函数，分布律，联合概率密度，联合分布函数，联合分布律，边缘概率密度，边缘分布函数都是什么意义和概念</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">cutedog</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/05/11/%E7%AC%AC6%E7%AB%A0-%E9%AB%98%E7%AD%89%E6%A6%82%E7%8E%87%E8%AE%BA/">http://example.com/2023/05/11/%E7%AC%AC6%E7%AB%A0-%E9%AB%98%E7%AD%89%E6%A6%82%E7%8E%87%E8%AE%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Cutedog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">数据科学</a></div><div class="post_share"><div class="social-share" data-image="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/11/%E7%AC%AC7%E7%AB%A0-%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8/" title="第7章 统计学入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">第7章 统计学入门</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/11/%E7%AC%AC5%E7%AB%A0-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%A5%E9%97%A8-%E4%B8%8D%E5%8F%AF%E8%83%BD%EF%BC%8C%E8%BF%98%E6%98%AF%E4%B8%8D%E5%A4%AA%E5%8F%AF%E8%83%BD/" title="第5章 概率论入门:不可能，还是不太可能"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">第5章 概率论入门:不可能，还是不太可能</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/04/14/%E7%AC%AC2%E7%AB%A0-%E6%95%B0%E6%8D%AE%E7%9A%84%E7%B1%BB%E5%9E%8B/" title="第2章 数据的类型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-14</div><div class="title">第2章 数据的类型</div></div></a></div><div><a href="/2023/04/14/%E7%AC%AC3%E7%AB%A0-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%845%E4%B8%AA%E6%AD%A5%E9%AA%A4/" title="第3章 数据科学的5个步骤"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-14</div><div class="title">第3章 数据科学的5个步骤</div></div></a></div><div><a href="/2023/05/11/%E7%AC%AC4%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" title="第4章 基本的数学知识"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-11</div><div class="title">第4章 基本的数学知识</div></div></a></div><div><a href="/2023/05/11/%E7%AC%AC5%E7%AB%A0-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%A5%E9%97%A8-%E4%B8%8D%E5%8F%AF%E8%83%BD%EF%BC%8C%E8%BF%98%E6%98%AF%E4%B8%8D%E5%A4%AA%E5%8F%AF%E8%83%BD/" title="第5章 概率论入门:不可能，还是不太可能"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-11</div><div class="title">第5章 概率论入门:不可能，还是不太可能</div></div></a></div><div><a href="/2023/05/11/%E7%AC%AC7%E7%AB%A0-%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8/" title="第7章 统计学入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-11</div><div class="title">第7章 统计学入门</div></div></a></div><div><a href="/2023/04/14/%E7%AC%AC1%E7%AB%A0-%E5%A6%82%E4%BD%95%E5%90%AC%E8%B5%B7%E6%9D%A5%E5%83%8F%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6/" title="第1章 如何听起来像数据科学家"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-14</div><div class="title">第1章 如何听起来像数据科学家</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">cutedog</div><div class="author-info__description">少年侠气，交结五都雄。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.bilibili.com"><i class="fab fa-github"></i><span>摸鱼</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><p align="center">微信号：cutedog906</p></div></div><div class="xpand" style="height:200px;"></div><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
+margin: 0;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+canvas {
+display: block;
+margin: 0 auto;
+cursor: move;
+}</style><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC6%E7%AB%A0-%E9%AB%98%E7%AD%89%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">第6章 高等概率论</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-%E4%BA%92%E8%A1%A5%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">6.1 互补事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-%E9%87%8D%E6%B8%A9%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%80%9D%E6%83%B3"><span class="toc-number">1.2.</span> <span class="toc-text">6.2 重温贝叶斯思想</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-1-%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86"><span class="toc-number">1.2.1.</span> <span class="toc-text">6.2.1 贝叶斯定理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3Blue1Brown%E7%9A%84%E8%A7%86%E9%A2%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">3Blue1Brown的视频</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E9%81%93%E4%B9%A0%E9%A2%98"><span class="toc-number">1.2.3.</span> <span class="toc-text">一道习题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E9%BB%84%E9%87%91%E8%88%B9"><span class="toc-number">1.2.4.</span> <span class="toc-text">寻找黄金船</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-2-%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86%E7%9A%84%E6%9B%B4%E5%A4%9A%E5%BA%94%E7%94%A8"><span class="toc-number">1.2.5.</span> <span class="toc-text">6.2.2 贝叶斯定理的更多应用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.</span> <span class="toc-text">6.3 随机变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-1-%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.1.</span> <span class="toc-text">6.3.1 离散型随机变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F"><span class="toc-number">1.3.2.</span> <span class="toc-text">排列组合公式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E9%A1%B9%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.3.</span> <span class="toc-text">二项随机变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.4.</span> <span class="toc-text">几何随机变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%8A%E6%9D%BE%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.5.</span> <span class="toc-text">泊松随机变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-2-%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.6.</span> <span class="toc-text">6.3.2 连续型随机变量</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC8%E7%AB%A0-%E9%AB%98%E7%AD%89%E7%BB%9F%E8%AE%A1%E5%AD%A6/" title="第8章 高等统计学">第8章 高等统计学</a><time datetime="2023-05-11T14:54:43.000Z" title="发表于 2023-05-11 22:54:43">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC7%E7%AB%A0-%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8/" title="第7章 统计学入门">第7章 统计学入门</a><time datetime="2023-05-11T14:53:02.000Z" title="发表于 2023-05-11 22:53:02">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC6%E7%AB%A0-%E9%AB%98%E7%AD%89%E6%A6%82%E7%8E%87%E8%AE%BA/" title="第6章 高等概率论">第6章 高等概率论</a><time datetime="2023-05-11T14:49:31.000Z" title="发表于 2023-05-11 22:49:31">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC5%E7%AB%A0-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%A5%E9%97%A8-%E4%B8%8D%E5%8F%AF%E8%83%BD%EF%BC%8C%E8%BF%98%E6%98%AF%E4%B8%8D%E5%A4%AA%E5%8F%AF%E8%83%BD/" title="第5章 概率论入门:不可能，还是不太可能">第5章 概率论入门:不可能，还是不太可能</a><time datetime="2023-05-11T14:47:28.000Z" title="发表于 2023-05-11 22:47:28">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC4%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" title="第4章 基本的数学知识">第4章 基本的数学知识</a><time datetime="2023-05-11T14:45:08.000Z" title="发表于 2023-05-11 22:45:08">2023-05-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By cutedog</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script src="/js/sun_moon.js" async></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>第8章 高等统计学 | Cutedog</title><meta name="author" content="cutedog"><meta name="copyright" content="cutedog"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第8章 高等统计学[toc] 8.1 点估计我们在上一章中提到，获得总体参数非常困难，甚至是难以实现的，所以我们通过计算样本的统计量得到总体参数。我们将通过以上方式估计参数值的方法，叫作**点估计(point estimates)**。 点估计指通过样本数据估计总体参数。 我们可以使用点估计的方法对总体均值、方差等统计量进行估计。为了得到估计值，我们只需将被计算对象由总体变为样本即可。比如，某公司">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第8章 高等统计学">
+<meta property="og:url" content="http://example.com/2023/05/11/%E7%AC%AC8%E7%AB%A0-%E9%AB%98%E7%AD%89%E7%BB%9F%E8%AE%A1%E5%AD%A6/index.html">
+<meta property="og:site_name" content="Cutedog">
+<meta property="og:description" content="第8章 高等统计学[toc] 8.1 点估计我们在上一章中提到，获得总体参数非常困难，甚至是难以实现的，所以我们通过计算样本的统计量得到总体参数。我们将通过以上方式估计参数值的方法，叫作**点估计(point estimates)**。 点估计指通过样本数据估计总体参数。 我们可以使用点估计的方法对总体均值、方差等统计量进行估计。为了得到估计值，我们只需将被计算对象由总体变为样本即可。比如，某公司">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg">
+<meta property="article:published_time" content="2023-05-11T14:54:43.000Z">
+<meta property="article:modified_time" content="2023-05-11T15:05:20.263Z">
+<meta property="article:author" content="cutedog">
+<meta property="article:tag" content="数据科学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/05/11/%E7%AC%AC8%E7%AB%A0-%E9%AB%98%E7%AD%89%E7%BB%9F%E8%AE%A1%E5%AD%A6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第8章 高等统计学',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-11 23:05:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Cutedog"><span class="site-name">Cutedog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">第8章 高等统计学</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-11T14:54:43.000Z" title="发表于 2023-05-11 22:54:43">2023-05-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-11T15:05:20.263Z" title="更新于 2023-05-11 23:05:20">2023-05-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>28分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="第8章 高等统计学"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="第8章-高等统计学"><a href="#第8章-高等统计学" class="headerlink" title="第8章 高等统计学"></a>第8章 高等统计学</h3><p>[toc]</p>
+<h4 id="8-1-点估计"><a href="#8-1-点估计" class="headerlink" title="8.1 点估计"></a>8.1 点估计</h4><p>我们在上一章中提到，获得总体参数非常困难，甚至是难以实现的，所以我们通过计算样本的统计量得到总体参数。我们将通过以上方式估计参数值的方法，叫作**点估计(point estimates)**。</p>
+<p>点估计指通过样本数据估计总体参数。</p>
+<p>我们可以使用点估计的方法对总体均值、方差等统计量进行估计。为了得到估计值，我们只需将被计算对象由总体变为样本即可。比如，某公司有9000名员工，我们希望知道每位员工平均每天休息的时长。我们可以从9000人中抽取一个样本，计算样本的平均值。样本平均值就是我们的点估计。</p>
+<p>下面我们通过Python模拟总体数据，规则如下。</p>
+<p>（1）根据第6章“高等概率论”，如果已知事件的平均值，那么通常使用<strong>泊松随机变量（poisson random variable）</strong>对事件进行建模。因此，我们用泊松分布随机生成9000 个调查问卷的答案：你平均每天休息的时长是多少？</p>
+<blockquote>
+<p>notes：请注意，总体的均值一般很难直接获取。本例计算总体的均值是为了将总体参数和样本做比较，以便你更深入地理解点估计。</p>
+</blockquote>
+<p>（2）从总体中随机抽取100名员工组成样本（使用Python的随机抽样方法），计算样本均值（总体均值的点估计）。</p>
+<p>（3）对比样本均值和全体均值。</p>
+<blockquote>
+<p>notes：请注意，样本大小占总体的比例略高于1%。</p>
+</blockquote>
+<p>下面是Python代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> scipy.stats <span class="keyword">as</span> stats</span><br><span class="line">%matplotlib inline</span><br><span class="line">np.random.seed(<span class="number">1234</span>)</span><br><span class="line"></span><br><span class="line">long_breaks=stats.poisson.rvs(loc=<span class="number">10</span>,mu=<span class="number">60</span>,size=<span class="number">3000</span>)</span><br><span class="line"><span class="comment"># represents 3000 people who take about a 60 minute break</span></span><br></pre></td></tr></table></figure>
+
+<p>变量long_breaks代表3000名员工的调查问卷结果，他们的平均休息时长是60min。我们用直方图查看数据的分布情况：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.Series(long_breaks).hist()</span><br></pre></td></tr></table></figure>
+
+<p>如图8.1所示，平均值60位于分布的左侧，最高的柱子对应的人数在700～800。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230429213749825.png" alt="image-20230429213749825"></p>
+<p>下面我们继续用泊松分布模拟另外6000名员工的调查问卷结果，他们的平均休息时长为15min，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">short_breaks=stats.poisson.rvs(loc=<span class="number">10</span>,mu=<span class="number">15</span>,size=<span class="number">6000</span>)</span><br><span class="line"><span class="comment"># represents 6000 people who take about a 15 minute break</span></span><br><span class="line">pd.Series(short_breaks).hist()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230429214001122.png" alt="image-20230429214001122"></p>
+<p>我们分别有了平均休息时长较长（60 min）和较短（15 min）的两个分布，下面将它们合并在一起，得到总体。代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">breaks=np.concatenate((long_breaks,short_breaks))</span><br><span class="line"><span class="comment"># put the two arrays together to get our &quot;population&quot; of 9000 people</span></span><br></pre></td></tr></table></figure>
+
+<p>变量breaks是long_breaks和short_breaks合并后的总体，它的分布情况如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.Series(breaks).hist()</span><br></pre></td></tr></table></figure>
+
+<p>图8.3中有两个隆起，左边隆起的柱子来自平均休息时长15min的员工，右边隆起的柱子来自平均休息时长60min的员工。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230429214339933.png" alt="image-20230429214339933"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">breaks.mean()</span><br><span class="line"><span class="comment"># 39.99 minutes is our parameter</span></span><br></pre></td></tr></table></figure>
+
+<p>我们的总体是9000名员工，总体的参数是40min。</p>
+<p>请记住，<strong>在现实世界中，多方面的原因导致我们没有足够资源调查每位员工的休息时长，所以才需要使用点估计的方法，对总体参数进行估计</strong>。</p>
+<p>下面我们随机抽取100人，计算他们的平均休息时长：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sample_breaks=np.random.choice(a=breaks,size=<span class="number">100</span>)</span><br><span class="line"><span class="comment"># taking a sample of 100 employees</span></span><br></pre></td></tr></table></figure>
+
+<p>下面我们计算样本均值，并将它和全体均值相减，对比两者的差异：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">breaks.mean()-sample_breaks.mean()</span><br><span class="line"><span class="comment"># difference between means is 4.09 minutes,not bad!</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>差异不大，这非常有意思！因为样本数量只占总体的1/9（100/9000），但估计的参数值和真实参数值的差异只有4min。</strong></p>
+<p>我们还可以用同样方法估计总体的<strong>比例（proportion）</strong>。比例指两个数值的比率。</p>
+<p>假设公司有10000名员工，其中白人20%，黑人10%，西班牙人10%，亚洲人30%，剩余30%来自其他地方。我们随机选取由1000人组成的样本，对比总体和样本的种族比例是否接近。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">employee_races=([<span class="string">&quot;white&quot;</span>]*<span class="number">2000</span>)+([<span class="string">&quot;black&quot;</span>]*<span class="number">1000</span>)+\</span><br><span class="line">				([<span class="string">&quot;hispanic&quot;</span>]*<span class="number">1000</span>)+([<span class="string">&quot;asian&quot;</span>]*<span class="number">3000</span>)+\</span><br><span class="line">				([<span class="string">&quot;other&quot;</span>]*<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>下面从总体中随机选取1000人，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">demo_sample=random.sample(employee_races,<span class="number">1000</span>)</span><br><span class="line"><span class="comment">#Sample 1000 values</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> race <span class="keyword">in</span> <span class="built_in">set</span>(demo_sample):</span><br><span class="line">    <span class="built_in">print</span>(race+<span class="string">&quot; proportion estimate:&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(demo_sample.count(race)/<span class="number">1000.</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hispanic proportion estimate:</span><br><span class="line"><span class="number">0.103</span></span><br><span class="line">white proportion estimate:</span><br><span class="line"><span class="number">0.192</span></span><br><span class="line">other proportion estimate:</span><br><span class="line"><span class="number">0.288</span></span><br><span class="line">black proportion estimate:</span><br><span class="line"><span class="number">0.1</span></span><br><span class="line">asian proportion estimate:</span><br><span class="line"><span class="number">0.317</span></span><br></pre></td></tr></table></figure>
+
+<p>从以上结果可以看出，种族比例的估计值和总体的真实分布非常接近。比如，样本中西班牙人的比例是10.3%，总体中西班牙人的比例是10%。</p>
+<h4 id="8-2-抽样分布"><a href="#8-2-抽样分布" class="headerlink" title="8.2 抽样分布"></a>8.2 抽样分布</h4><p>在第7章中，我们提到有多喜欢呈正态分布的数据！<strong>其中一个重要原因是很多假设检验（包括本章使用的方法）都要求数据服从正态分布。遗憾的是现实世界中大部分数据并不服从正态分布</strong>（吃惊吗？）。以员工休息时长数据为例，你可能认为我是随机选取了泊松分布，但实际上我是刻意的——我希望得到非正态分布数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame(breaks).hist(bins=<span class="number">50</span>,<span class="built_in">range</span>=(<span class="number">5</span>,<span class="number">100</span>))</span><br></pre></td></tr></table></figure>
+
+<p>从图8.4可以看出，数据不服从正态分布，看起来像是<strong>双峰分布（bi-modal）</strong>，两个凸起点分别位于25min和70min附近。由于数据不呈正态分布，所以很多常用的统计检验都无法使用。<strong>但是，我们有办法将以上数据转换为正态分布！</strong>是不是认为我疯了？好吧，自己来看吧。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230429220359870.png" alt="image-20230429220359870"></p>
+<p>首先，我们需要了解什么是<strong>抽样分布（sampling distribution）</strong>。<strong>抽样分布是多个大小相同的样本的点估计的分布。</strong>我们通过以下方法模拟抽样分布：</p>
+<blockquote>
+<p><strong>抽样分布说的是对谁的分布？答案是样本统计量，比如样本均数或样本率。</strong></p>
+</blockquote>
+<p>（1）随机生成500个样本，每个样本大小为100；</p>
+<p>（2）对以上500个点估计做直方图（看看它们的分布）。</p>
+<p>虽然样本大小100是随意确定的，但它需要足够大，以体现总体的分布特征。样本数量500也是随意确定的，但它也需要足够大，以便能够生成正态分布。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">point_estimates=[]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">500</span>): <span class="comment"># Generate 500 samples</span></span><br><span class="line">    sample=np.random.choice(a=breaks,size=<span class="number">100</span>)</span><br><span class="line">    <span class="comment"># take a sample of 100 points</span></span><br><span class="line">    point_estimates.append(sample.mean())</span><br><span class="line">    <span class="comment"># add the sample mean to our list of point estimates</span></span><br><span class="line"></span><br><span class="line">pd.DataFrame(point_estimates).hist()</span><br><span class="line"><span class="comment"># look at the distribution of our sample means</span></span><br></pre></td></tr></table></figure>
+
+<p>看到了吧！<strong>虽然我们的原始数据是双峰分布，但样本均值的抽样分布是正态分布。</strong>请注意，图8.5是500个随机样本的平均休息时间分析，每个样本含有100人。换句话说，抽样分布是多个点估计的分布。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230429222550390.png" alt="image-20230429222550390"></p>
+<blockquote>
+<p>以样本均数为例，一般说样本均数的抽样分布如何如何，这里，<strong>样本均数被当成了一个随机变量来看待</strong>。这或许是最核心的要点：<strong>样本均数是一个随机变量</strong>。</p>
+<p>为何样本均数可以被当作一个随机变量？因为样本均数是依赖样本计算得出的：<strong>每抽取一组样本都可以计算出一个样本均数，而且这些样本均数或多或少都会有些差异。由此，样本均数会随着抽样的不同而随机变动。</strong>只是现实生活中我们一般只抽取一组样本，计算一个样本均数，因此，会觉得样本均数不变。</p>
+</blockquote>
+<p>抽样分布之所以呈正态分布是因为<strong>中心极限定理（central limit theorem）</strong>。</p>
+<blockquote>
+<p>中心极限定理的逻辑：<strong>在任意总体中随机抽取一个样本量为n的样本，如果样本容量较大（通常大于等于30），那么通过这个样本计算的样本均数近似服从正态分布。</strong></p>
+</blockquote>
+<p>随着我们增大样本的数量，抽样分布（点估计的分布）将逐渐趋向正态分布。而且，随着样本数量越来越多，样本均值的分布将越来越接近真实的均值，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">breaks.mean()-np.array(point_estimates).mean()</span><br><span class="line"><span class="comment"># 0.047 minutes difference</span></span><br></pre></td></tr></table></figure>
+
+<p>这是一个非常有意思的结果。根据中心极限定理，我们通过多个点估计得到的值比单个点估计更接近真实值。</p>
+<blockquote>
+<p>notes：通常来讲，随着我们增大样本的数量，估计值将逐渐接近真实值。</p>
+</blockquote>
+<blockquote>
+<p>因为抽样分布概念的引入以及中心极限定理的应用，我们不再害怕原总体分布是否服从正态分布，只要样本量满足一定要求，根据样本计算的各种统计量几乎都服从正态分布，从而均能用正态分布的性质来进行研究。</p>
+</blockquote>
+<blockquote>
+<p>对抽样分布的总结：抽样分布是针对样本统计量而言的，比如样本均数。在同一个总体中，重复多次抽取样本量为n的多组样本，每一组样本均可计算出一个样本均数，将这些样本均数汇集在一起就获得了所谓的样本均数的抽样分布。我们把样本均数看做一个新“随机变量”，可以对它再求平均数和标准差。</p>
+<p>一个简单但非常实用的规律是，无论X的分布如何，如果X的总体均数是 <img src="https://mmbiz.qpic.cn/mmbiz_svg/rK1nsTlCD8FJT6riaePDvCwT2dul9lXefeicdJzQPlHUYCgykHQaFzDFhIaEBVfRD0JMYws9hzbVHVC0486Sb4U5BU8RJVDHsn/640?wx_fmt=svg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"> ，标准差是 <img src="https://mmbiz.qpic.cn/mmbiz_svg/rK1nsTlCD8FJT6riaePDvCwT2dul9lXefhWQWMMfpgHB5KPhl9ibONrhbl7pRGbw8C5qJ6qzsQhibSgSSZe8GRicvsAtV3Kr2PMN/640?wx_fmt=svg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"> ，则其样本均数服从正态分布N（ <img src="https://mmbiz.qpic.cn/mmbiz_svg/rK1nsTlCD8FJT6riaePDvCwT2dul9lXefeicdJzQPlHUYCgykHQaFzDFhIaEBVfRD0JMYws9hzbVHVC0486Sb4U5BU8RJVDHsn/640?wx_fmt=svg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"> ，<img src="https://mmbiz.qpic.cn/mmbiz_svg/rK1nsTlCD8FJT6riaePDvCwT2dul9lXefvP6SwuHFw5PjenCwrGHehibZQ5d4CJdUVqW2gCpdwUCicBQyWL4lYFibicp301OQyu5F/640?wx_fmt=svg&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片">）。需要注意的是，这里的样本要满足比较大的样本量。</p>
+</blockquote>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/KK0kdNSMQX8SDaw6BfMzrw">抽样好懂，抽样分布又在说啥</a></p>
+<h4 id="8-3-置信区间"><a href="#8-3-置信区间" class="headerlink" title="8.3 置信区间"></a>8.3 置信区间</h4><p>参考资料：在<em>概率论与数理统计全集（统计学）学习笔记</em>内可以找到更多参考。</p>
+<blockquote>
+<p>我认为原文讲的置信区间的内容不是很容易理解，推荐先看参考资料再看原文。</p>
+</blockquote>
+<p>虽然点估计可以估算总体的参数和抽样分布，但仍然存在两个重要问题：</p>
+<p>（1）单个点估计非常容易出错（由于样本偏差等原因）；</p>
+<p>（2）计算多个固定大小样本的抽样分布是不可行的，有时甚至比直接计算总体参数还难。</p>
+<p>正因为如此，我们引入统计学中非常重要的一个概念——<strong>置信区间（confidence intervals）</strong>。置信区间是一个区间值，是指在给定置信水平下，该区间将包含总体参数。</p>
+<blockquote>
+<p>所有的科学实验和测量都无法避免误差。所以科学实验中总是会在测量结果上加一个误差范围。比如，经过测量，马云的智商是100，测量误差是±5，即[100-5,100+5]</p>
+</blockquote>
+<p>置信水平是高等统计学最重要的概念之一，它经常被误解。非正式地说，置信水平并不是结果“正确的概率”，相反，它表示结果“准确的频率”。比如，假设我们希望每一次点估计都能以95%的概率得到准确的总体参数，那么置信水平需要设置为95%。</p>
+<blockquote>
+<p>notes：较高的置信水平将导致置信区间变得更广。</p>
+</blockquote>
+<blockquote>
+<p>置信水平（confidence level）Y%：置信区间包含总体平均值的概率P(a&lt;样本平均值&lt;b)=Y%</p>
+<p>我们选择[a,b]这个置信区间，目的是为了让“a和b之间包含总体平均值”这一结果具有特定的概率，这个概率就是置信水平。</p>
+</blockquote>
+<p>为了得到置信区间，我们需要找到点估计和<strong>误差幅度（margin of error）</strong>。误差幅度指我们能接受的点估计的误差范围，它依赖于置信区间、数据的方差和样本大小。有很多方法可以计算置信区间，为了简单起见，我们将用最简单的方法计算总体均值的置信区间。</p>
+<p>为了计算置信区间，我们需要：</p>
+<ul>
+<li><p>点估计，比如样本的平均休息时长。</p>
+</li>
+<li><p>总体标准差的估计值，它表示数据的离散程度。</p>
+<pre><code>通过样本标准差除以总体大小的平方根计算。
+</code></pre>
+</li>
+<li><p>自由度（样本大小减1）。</p>
+</li>
+</ul>
+<p>以上数据可能看起来有点随意，但请相信我，这都是有原因的。我将用Python内置的模块计算置信区间，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sample_size=<span class="number">100</span></span><br><span class="line"><span class="comment"># the size of the sample we wish to take</span></span><br><span class="line">sample=np.random.choice(a=breaks,size=sample_size)</span><br><span class="line"><span class="comment"># a sample of sample_size taken from the 9000 breaks population from before</span></span><br><span class="line"></span><br><span class="line">sample_mean=sample.mean()</span><br><span class="line"><span class="comment"># the sample mean of the break lengths sample</span></span><br><span class="line"></span><br><span class="line">sample_stdev=sample.std()</span><br><span class="line"><span class="comment"># sample standard deviation</span></span><br><span class="line"></span><br><span class="line">sigma=sample_stdev/math.sqrt(sample_size)</span><br><span class="line"><span class="comment"># population standard deviation estimate</span></span><br><span class="line"></span><br><span class="line">stats.t.interval(alpha=<span class="number">0.95</span>,         <span class="comment"># Confidence level 95%</span></span><br><span class="line">                df=sample_size-<span class="number">1</span>,    <span class="comment"># Degrees of freedom</span></span><br><span class="line">                loc=sample_mean,     <span class="comment"># Sample mean</span></span><br><span class="line">                scale=sigma)         <span class="comment"># Standard deviation</span></span><br><span class="line"><span class="comment"># (36.36,45.44)</span></span><br></pre></td></tr></table></figure>
+
+<p>再次强调，区间36.36至45.44是置信水平为95%时，平均休息时长的置信区间。我们知道总体的参数是39.99。显然，置信区间包含了总体的参数。</p>
+<p>我们之前曾经说置信水平不是区间准确的百分比，而是区间包含总体参数的概率。</p>
+<p>为了更好地理解置信水平，下面我们计算10000个置信区间，然后计算总体参数包含在置信区间的概率。首先，我们创建一个生成置信区间的函数，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># function to make confidence interval</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">makeConfidenceInterval</span>():</span><br><span class="line">    sample_size=<span class="number">100</span></span><br><span class="line">    sample=np.random.choice(a=breaks,size=sample_size)</span><br><span class="line">    </span><br><span class="line">    sample_mean=sample.mean()</span><br><span class="line">    <span class="comment"># sample mean</span></span><br><span class="line">    </span><br><span class="line">    sample_stdev=sample.std()</span><br><span class="line">    <span class="comment"># sample standard deviation</span></span><br><span class="line">    </span><br><span class="line">    sigma=sample_stdev/math.sqrt(sample_size)</span><br><span class="line">    <span class="comment"># population standard deviation estimate</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> stats.t.interval(alpha=<span class="number">0.95</span>,df=sample_size-<span class="number">1</span>,loc=sample_mean,scale=sigma)</span><br></pre></td></tr></table></figure>
+
+<p>然后再通过一段程序，检验该置信区间包含总体参数39.99的概率：</p>
+<p>（1）生成10000个样本的置信区间；</p>
+<p>（2）计算置信区间包含总体参数的次数；</p>
+<p>（3）用置信区间包含总体参数的次数除以10000。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">times_in_interval=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):</span><br><span class="line">    interval=makeConfidenceInterval()</span><br><span class="line">    <span class="keyword">if</span> <span class="number">39.99</span>&gt;=interval[<span class="number">0</span>] <span class="keyword">and</span> <span class="number">39.99</span>&lt;=interval[<span class="number">1</span>]:</span><br><span class="line">    <span class="comment"># if 39.99 falls in the interval</span></span><br><span class="line">        times_in_interval+=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(times_in_interval/<span class="number">10000</span>)</span><br><span class="line"><span class="comment"># 0.9455</span></span><br></pre></td></tr></table></figure>
+
+<p>成功啦！结果显示，接近95%的置信区间都包含了总体均值，说明通过点估计和置信区间估计总体参数是一个相对简单和有效的统计推理。</p>
+<p>下面我们来看随着置信水平的改变，置信区间大小如何变化。我们将计算不同置信水平对应的置信区间大小的差异。我们预期随着置信水平的提高，置信区间将随之增大，以提高包含总体参数的概率。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> confidence <span class="keyword">in</span> (<span class="number">.5</span>,<span class="number">.8</span>,<span class="number">.85</span>,<span class="number">.9</span>,<span class="number">.95</span>,<span class="number">.99</span>):</span><br><span class="line">    confidence_interval=stats.t.interval(alpha=confidence,</span><br><span class="line">                                         df=sample_size-<span class="number">1</span>,</span><br><span class="line">                                         loc=sample_mean,</span><br><span class="line">                                         scale=sigma)</span><br><span class="line">    length_of_interval=<span class="built_in">round</span>(confidence_interval[<span class="number">1</span>]-confidence_interval[<span class="number">0</span>],<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># the length of the confidence interval</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;confidence &#123;0&#125; has a interval of size &#123;1&#125;&quot;</span>.<span class="built_in">format</span>(confidence,length_of_interval))</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">confidence <span class="number">0.5</span> has an interval of size <span class="number">2.56</span></span><br><span class="line">confidence <span class="number">0.8</span> has an interval of size <span class="number">4.88</span></span><br><span class="line">confidence <span class="number">0.85</span> has an interval of size <span class="number">5.49</span></span><br><span class="line">confidence <span class="number">0.9</span> has an interval of size <span class="number">6.29</span></span><br><span class="line">confidence <span class="number">0.95</span> has an interval of size <span class="number">7.51</span></span><br><span class="line">confidence <span class="number">0.99</span> has an interval of size <span class="number">9.94</span></span><br></pre></td></tr></table></figure>
+
+<p>从以上结果可以看到，随着置信水平的提高，置信区间确实逐渐增大了。</p>
+<p>接下来，我们将用置信区间研究假设检验，一方面扩大这个话题，另一方面用它进行更强大的统计推理。</p>
+<h4 id="8-4-假设检验"><a href="#8-4-假设检验" class="headerlink" title="8.4 假设检验"></a>8.4 假设检验</h4><p>参考资料：在<em>概率论与数理统计全集（统计学）学习笔记</em>内可以找到更多参考。</p>
+<p><strong>假设检验（hypothesis tests）</strong>是统计学中应用最广泛的检验方法之一。它有多种形式，但目的都是一致的。</p>
+<p>假设检验是一种统计学检验，用来确定对于总体中给定的样本，我们是否能够接受某一特定假设。本质上，假设检验是一种关于总体的某种假设的检验。检验的结果将告诉我们是否可以信任原假设，或拒绝原假设，接受备择假设。</p>
+<p>你也可以认为，假设检验的核心是确定样本数据的特征是否背离了总体。这项工作现在听起来很难，幸运的是Python能拯救我们，它内置的包可以轻松地完成这些检验。</p>
+<p>假设检验通常有两个相反的假设，我们称之为<strong>原假设（null hypothesis）</strong>和<strong>备择假设（alternative hypothesis）</strong>。原假设是被检验的假设，也是默认正确的假设，它是实验的出发点。备择假设通常是与原假设相反的假设。假设检验结果将告诉我们哪个假设值得信任，哪个假设需要被拒绝。</p>
+<p>假设检验根据样本数据，决定是否应该拒绝原假设。我们通常基于p值（依赖于置信水平）做出决定。</p>
+<blockquote>
+<p>notes：一个常见的错误想法是统计学的假设检验被设计用来从两个相似的假设中做选择。这是不正确的。假设检验默认原假设是正确的，除非有足够的数据支持备择假设。</p>
+</blockquote>
+<p>以下是几个可以用假设检验进行回答的问题：</p>
+<ul>
+<li>平均休息时长是否不等于40min？</li>
+<li>使用网页A的用户和使用网页B的用户是否存在差异（A/B测试）？</li>
+<li>样本咖啡豆的味道和总体咖啡豆的味道是否有显著差异？</li>
+</ul>
+<h5 id="8-4-1-实施假设检验"><a href="#8-4-1-实施假设检验" class="headerlink" title="8.4.1 实施假设检验"></a>8.4.1 实施假设检验</h5><p>假设检验有多种不同的方法，它们的实施方式和指标也各不相同。尽管如此，所有的假设检验都包含以下5个最基本步骤。</p>
+<p>（1）<strong>明确假设</strong>。</p>
+<ul>
+<li><p>我们在这一步形成两个假设：原假设和备择假设。</p>
+</li>
+<li><p>我们通常用符号$H_0$表示原假设，符号$H_α$表示备择假设。</p>
+</li>
+</ul>
+<p>（2）<strong>决定被检验样本的大小</strong>。</p>
+<ul>
+<li>样本大小取决于被选择的检验类型。样本大小必须合适，并服从中心极限定理和数据正态性假设。</li>
+</ul>
+<p>（3）<strong>选择置信水平（通常叫作阿尔法，符号a）</strong>。</p>
+<ul>
+<li> 通常用0.05的显著性水平。</li>
+</ul>
+<p>（4）<strong>收集数据</strong>。</p>
+<ul>
+<li>收集检验所需的样本数据。</li>
+</ul>
+<p>（5）<strong>决定是否接受或拒绝原假设</strong>。</p>
+<ul>
+<li>这一步取决于假设检验的类型。最终结果可能是接受原假设，也可能是放弃原假设，接受备择假设。</li>
+</ul>
+<p>本章中，我们将介绍以下3种类型的假设检验：</p>
+<ul>
+<li><strong>单样本t检验（one sample t-tests）</strong>。</li>
+<li><strong>卡方拟合度检验（Chi-square test for goodness of fit test）</strong>。</li>
+<li><strong>卡方相关性/独立性检验（Chi-square test for association/independence）</strong>。</li>
+</ul>
+<p>实际上，还有更多假设检验方法，但以上3种是最常用的方法。在选择检验方法时，最需要考虑的因素是被检验数据的类型——连续型数据，还是分类数据。为了让你真正看到假设检验的效果，我们将直接进入案例。</p>
+<p>首先，对于连续型数据，我们选择t检验。</p>
+<h5 id="8-4-2-单样本t检验"><a href="#8-4-2-单样本t检验" class="headerlink" title="8.4.2 单样本t检验"></a>8.4.2 单样本t检验</h5><p>单样本t检验是一种用于检验样本（数值型）是否和另一个数据集（总体或其他样本）具有显著性差异的统计检验方法。我们继续平均每天休息时长案例，用以下代码模拟工程部的平均休息时长：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br><span class="line">long_breaks_in_engineering=stats.poisson.rvs(loc=<span class="number">10</span>,mu=<span class="number">55</span>,size=<span class="number">100</span>)</span><br><span class="line">short_breaks_in_engineering=stats.poisson.rvs(loc=<span class="number">10</span>,mu=<span class="number">15</span>,size=<span class="number">300</span>)</span><br><span class="line">engineering_breaks=np.concatenate((long_breaks_in_engineering,short_breaks_in_engineering))</span><br><span class="line"><span class="built_in">print</span>(breaks.mean())</span><br><span class="line"><span class="comment"># 39.99</span></span><br><span class="line"><span class="built_in">print</span>(engineering_breaks.mean())</span><br><span class="line"><span class="comment"># 34.825</span></span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>此次生成的泊松分布样本较小，只模拟了工程部的400人；</li>
+<li>参数mu被设置为55而不是之前的60，以确保工程部的平均休息时长和整个公司不一致。</li>
+</ul>
+<p>我们从代码的运行结果很容易看出，工程部的平均休息时长和整个公司有显著差异。但是请你注意，在真实场景下，我们通常无法获取总体和总体参数。为了更好地讲解，本书特意模拟和计算了总体参数，以便我们能够看出样本和总体的差异。</p>
+<p>现在，假设我们对总体参数一无所知，需要依靠统计检验方法验证两者是否存在显著性差异。</p>
+<p><strong>案例：单样本t检验</strong></p>
+<p>我们的目标是验证总体（全公司）的平均休息时长是否和工程部门的平均休息时长存在显著性差异。</p>
+<p>我们在95%置信水平上进行单样本t检验。理论上说，检验结果将告诉我们样本和总体是否有相同的分布特征。</p>
+<p><strong>单样本t检验的假设</strong></p>
+<p>在实施假设检验之前，我们有必要先了解t检验需要满足的条件：</p>
+<ul>
+<li>总体要满足正态分布，或样本大小至少大于30；</li>
+<li>总体大小至少是样本大小的10倍，以确保样本是独立随机样本。</li>
+</ul>
+<p>请注意，t检验要求要么总体呈正态分布（我们知道这是不现实的），要么样本含有的数据点超过30个，这些条件都是为了确保数据的正态性。同时，t检验还要求样本独立，这可以通过取少量样本实现。总之，t检验的基本要求是，样本既要足够大以保持正态性，又要相对总体足够小以保持独立性。这听起来不可思议，不是吗？</p>
+<p>下面，我们按照之前介绍的5个步骤进行t检验。</p>
+<p>（1）明确假设。</p>
+<p>我们假设$H_0$=工程部平均休息时长和公司平均休息时长相同。</p>
+<p>请注意，$H_0$是我们的<strong>原假设（null hypothesis）</strong>。它是我们在没有数据作支撑时认为成立的假设。与之相对应，我们还有<strong>备择假设（alternative hypothesis）</strong>。</p>
+<p>我们有多个备择假设可以选择。比如，我们可以认为工程部的平均值低于或高于公司的平均值，或者不等于公司的平均值。</p>
+<ul>
+<li>如果我们想知道工程部的平均值是否不等于公司的平均值，这属于<strong>双尾检验（two-tailed test）</strong>，此时的备择假设如下：</li>
+</ul>
+<p>$$<br>H_α=工程部平均休息时长不等于公司平均休息时长<br>$$</p>
+<ul>
+<li>如果我们想知道工程部的平均值低于或高于公司的平均值，这属于<strong>单尾检验（one-tailed test）</strong>，此时的备择假设如下：</li>
+</ul>
+<p>$$<br>H_α=工程部平均休息时长低于公司平均休息时长<br>\<br>H_α=工程部平均休息时长高于公司平均休息时长<br>$$</p>
+<p>单尾检验和双尾检验的区别在于得到的结果是否需要除以2。除此之外，两者的检验过程完全一致。本例中，我们选择双尾检验，我们希望知道工程部平均休息时长是否等于公司平均休息时长。</p>
+<blockquote>
+<p>notes：假设检验结果有两种可能：要么接受原假设，也就是说没有足够的证据支持我们拒绝原假设；要么拒绝原假设，接受备择假设，即工程部平均休息时长不等于公司平均休息时长。</p>
+</blockquote>
+<p>（2）决定被检验样本的大小。</p>
+<p>大多数检验方法（包括本例）都要求数据呈正态分布，或者样本具有合适的大小：</p>
+<p>样本至少含有30个数据点（本例中样本有400人）；</p>
+<p>样本占总体的比例低于10%（本例中总体有9000人）。o</p>
+<p>（3）选择显著性水平（通常用α表示）。</p>
+<p>我们选择显著性水平95%，这意味着α值等于1-0.95=0.05 </p>
+<p>（4）收集数据。</p>
+<p>这一步已经提前完成！我们用两个泊松分布生成了数据。</p>
+<p>（5）决定是否接受或拒绝原假设。</p>
+<p>正如之前所说，最后一步随假设检验类型的不同而不同。对于单样本 t 检验，我们需要计算两个值：检验统计量和p值。幸运的是在Python中，只需要一行代码即可完成这项工作。</p>
+<p>检验统计量是根据样本数据计算的一个数值，我们通常根据它决定是否应该拒绝原假设。检验统计量也用于将观测值和原假设预期得到的结果进行比较。</p>
+<p>p值是观测值出现的概率，它通常和检验统计量一起使用。</p>
+<p>当有强烈的证据拒绝原假设时，检验统计量通常非常大（正负皆可），p值通常非常小。这意味着检验结果非常可靠，而不是随机出现的结果。</p>
+<p>对于本例使用的t检验，t值就是我们的检验统计量，Python代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t_statistic,p_value=stats.ttest_lsamp(a=engineering_breaks,popmean=breaks.mean())</span><br><span class="line">t_statistic==-<span class="number">5.742</span></span><br><span class="line">p_value==<span class="number">.00000018</span></span><br></pre></td></tr></table></figure>
+
+<p>检验结果显示t值等于-5.742，它表示原假设中样本均值的偏离程度。p值用于体现检查结果是否可靠，它是我们最终做出结论的依据。对于本例，如果p值等于0.06，说明我们有6%的概率得到这个结果，也就是说，有6%的样本可以得出这样的结果。</p>
+<p>我们需要将p值和显著性水平进行对比：</p>
+<ul>
+<li>如果p值低于显著性水平，则拒绝原假设；</li>
+<li>如果p值高于显著性水平，则接受原假设。</li>
+</ul>
+<p>在本例中，我们的p值低于显著性水平0.05，因此我们拒绝原假设，接受备择假设，即工程部的平均休息时长不等于公司平均休息时长。</p>
+<blockquote>
+<p>notes：对p值的使用存在一些争议。很多出版物已经禁止用p值表示显著性，主要原因是p值的含义。假设p值等于0.04，那么数据恰好得出该结果的概率是4%，而不是任何情况下的显著性水平. 4%不是一个可以忽略的小数！正因为如此，很多人转向使用其他检验统计量。然而这并不意味着p值毫无用处，只说明我们必须谨慎地使用p值，弄清楚它究竟意味着什么。</p>
+</blockquote>
+<p>还有其他类型的t检验，比如单尾检验、配对检验（paired test）和双样本t检验。它们的具体操作过程可以在其他统计学资料中查看。现在，我们应该看看另一个重要的事情——如果假设检验结果出错会发生什么？</p>
+<h5 id="8-4-3-I型错误和II型错误"><a href="#8-4-3-I型错误和II型错误" class="headerlink" title="8.4.3 I型错误和II型错误"></a>8.4.3 I型错误和II型错误</h5><p>我们在介绍二元分类器时曾介绍过I型错误（type I errors）和Ⅱ型错误（type Ⅱ errors），它们也同样适用于假设检验。</p>
+<p>当原假设正确，但我们却拒绝了原假设时称为I型错误，或假阳性（false positive）错误。I型错误率等于显著性水平α，这意味着如果我们设置了较高的置信水平，比如99%，那么出现假阳性错误的概率等于1%。</p>
+<p>当原假设错误，但我们没有拒绝原假设时称为Ⅱ型错误，或假阴性（false negative）错误。我们设置的置信水平越高，越容易遇到假阴性错误。</p>
+<h5 id="8-4-4-分类变量的假设检验"><a href="#8-4-4-分类变量的假设检验" class="headerlink" title="8.4.4 分类变量的假设检验"></a>8.4.4 分类变量的假设检验</h5><p>t检验（包括其他几种检验方法）适用于定量数据。下面我们将介绍两种新的检验方法，它们适用于定性数据。这两种检验方法都属于<strong>卡方检验（chi-square tests）</strong>，主要用于：</p>
+<ul>
+<li>检验样本中的分类变量是否来自某个特定总体（和t检验类似）；</li>
+<li>检验两个分类变量是否彼此影响。</li>
+</ul>
+<p><strong>卡方拟合度检验</strong></p>
+<p>t检验用于检验样本均值是否等于总体均值。<strong>卡方拟合度检验（chi-square goodness of fit test）</strong>和t检验类似，用于检验样本分布是否符合预期。两者最大的区别在于卡方检验的对象是分类变量。</p>
+<p>比如，卡方拟合度检验可以检测你们公司雇员的种族分布是否和美国人口的种族分布一致，或者检验你们的网站用户是否和整个互联网的用户具有相同特征。</p>
+<p>当我们处理分类数据时要特别小心，因为诸如”男性（male）””女性（female）”和”其他（other）”之类的分类信息没有任何数学含义。因此我们需要对变量进行计数，而不仅仅是变量本身的含义。</p>
+<p>通常情况下，卡方拟合度检验用于：</p>
+<ul>
+<li>分析总体中的某个分类变量；</li>
+<li>分析某个分类变量是否符合预期的分布。</li>
+</ul>
+<p>对于卡方检验，我们将观察到的结果和希望得到的结果做对比。</p>
+<p><strong>卡方拟合度检验的假设条件</strong></p>
+<p>卡方拟合度检验需满足以下两个条件：</p>
+<ul>
+<li>期望频数（expected counts）不低于5个；</li>
+<li>每个观测值都是独立的，且总体大小至少是样本的10倍。</li>
+</ul>
+<p>第2个条件和t检验的要求类似，第1个条件则看起来比较陌生。</p>
+<p>在定义原假设和备择假设时，我们会考虑分类变量的默认分布。比如，假设有一个模具，我们希望知道被检验对象是否来自同一个模具，那么原假设可能是：<br>$$<br>H_0=分类变量符合特定分布<br>\<br>p1=1/6,p2=1/6,p3=1/6,p4=1/6,p5=1/6,p6=1/6<br>$$<br>备择假设：<br>$$<br>H_α=分类变量不符合特定分布（至少有1个概率值不正确）<br>$$<br>在t检验中，我们用t值作为检验统计量并计算相应的p值。对于卡方检验，我们的检验统计量是卡方（chi-square）：<br>$$<br>x^2=遍历分类变量所有的值<br>\<br>自由度(degrees of freedom)=k-1<br>$$<br>为了便于理解，我们用一个例子进行演示。</p>
+<p><strong>案例：卡方拟合度检验</strong></p>
+<p>疾控中心（以下简称CDC）将成年人的身体质量指数（以下简称BMI）分为4类：过轻/正常、过重、肥胖和非常肥胖。2009年的一项调查显示，美国成年人的BMI分别是31.2%、33.1%、29.4%和6.3%。我们随机抽取500名成年人，记录他们的BMI分类。</p>
+<p>请问新的调查结果和2009年的调查结果是否有显著差异？假设显著性水平是0.05。</p>
+<p>首先，我们计算每个分类的预期值，如表8.1所示。</p>
+<table>
+<thead>
+<tr>
+<th>BMI分类</th>
+<th>过轻/正常</th>
+<th>过重</th>
+<th>肥胖</th>
+<th>非常肥胖</th>
+<th>总计</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>观测值</td>
+<td>102</td>
+<td>178</td>
+<td>186</td>
+<td>34</td>
+<td>500</td>
+</tr>
+<tr>
+<td>预期值</td>
+<td>156</td>
+<td>165.5</td>
+<td>147</td>
+<td>31.5</td>
+<td>500</td>
+</tr>
+</tbody></table>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230430213117592.png" alt="image-20230430213117592"></p>
+<p>我们可以用好帮手Python计算，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">observed=[<span class="number">102</span>,<span class="number">178</span>,<span class="number">186</span>,<span class="number">34</span>]</span><br><span class="line">expected=[<span class="number">156</span>,<span class="number">165.5</span>,<span class="number">147</span>,<span class="number">31.5</span>]</span><br><span class="line"></span><br><span class="line">chi_squared,p_value=stats.chisquare(f_obs=observed,f_exp=expected)</span><br><span class="line"></span><br><span class="line">chi_squared,p_value</span><br><span class="line"><span class="comment"># (30.1817679275599,1.26374310311106e-06)</span></span><br></pre></td></tr></table></figure>
+
+<p>p值低于0.05，因此我们拒绝原假设，接受备择假设，即目前的BMI分布和2009年的BMI分布不同。</p>
+<p><strong>卡方相关性/独立性检验</strong></p>
+<p>在概率论中，独立性（independence）指变量间互不影响。比如，你出生的国家和出生的月份是互相独立的。但是，你使用的手机类型则可能暴露你的选择偏好，因此这两个变量就不具有独立性。</p>
+<p>卡方相关性/独立性检验用于检验两个分类变量是否互相独立。该检验通常用来判断教育水平或税率等级是否受人口统计学的影响，比如性别、种族和宗教信仰等。下面我们回看上一章介绍的A/B测试案例。</p>
+<p>在A/B测试案例中，我们让一半的用户使用网页A登录，另一半用户使用网页B登录，分别统计了两个网页的注册数，如表8.2所示。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>未注册</th>
+<th>注册</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>网页A</td>
+<td>134</td>
+<td>54</td>
+</tr>
+<tr>
+<td>网页B</td>
+<td>110</td>
+<td>48</td>
+</tr>
+</tbody></table>
+<p>我们可以计算网页的转化率，但我们真正想知道的是以下两个变量是否存在相关性：<strong>用户使用哪个网页登录？是否进行了注册？</strong>我们将使用卡方检验进行验证。</p>
+<p><strong>卡方独立性检验的假设条件</strong></p>
+<p>卡方独立性检验需满足以下两个条件：</p>
+<ul>
+<li>每个分类的频数至少为5；</li>
+<li>每个观测值都是独立的，且总体大小至少是样本大小的10倍。</li>
+</ul>
+<p>事实上，这两个条件和卡方拟合度检验相同。</p>
+<p>下面我们定义原假设和备择假设：</p>
+<ul>
+<li>$H_0$：两个分类变量没有相关性。</li>
+<li>$H_0$：两个分类变量是互相独立的。</li>
+<li>$H_α$：两个分类变量具有相关性。</li>
+<li>$H_α$：两个分类变量非互相独立的。</li>
+</ul>
+<p>你可能注意到我们遗漏了一个关键信息，期望频数（expected count）在哪里？在之前的检验中，我们会将先验分布和观测到的结果进行比较，但现在却没有这一步。为了完成这一步，我们需要新生成一些信息，用以下公式计算每个观测对象对应的期望值：<br>$$<br>期望频数=计算卡方检验的检验统计量和自由度<br>\<br>检验统计量:x^2=∑{(观测值_{r,c}-预期值_{r,c})^2\over 预期值_{r,c}}<br>\<br>自由度=(r-1)×(c-1)<br>$$<br>其中r表示行数，c表示列数。和之前类似，我们还可以计算p值，当p值低于显著性水平时拒绝原假设。我们同样使用Python内置的方法快速计算结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">observed=np.array([[<span class="number">134</span>,<span class="number">54</span>],[<span class="number">110</span>,<span class="number">48</span>]])</span><br><span class="line"><span class="comment"># built a 2×2 matrix as seen in the table above</span></span><br><span class="line"></span><br><span class="line">chi_squared,p_value,degrees_of_freedom,matrix=stats.chi2_contingency(observed= observed)</span><br><span class="line"></span><br><span class="line">chi_squared,p_value</span><br><span class="line"><span class="comment"># (0.04762692369491045,0.82724528704422262)</span></span><br></pre></td></tr></table></figure>
+
+<p>结果显示p值非常大，因此我们无法拒绝原假设，也就是说，没有足够证据显示网页类型对用户注册率有影响，两个变量之间没有相关性。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">cutedog</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/05/11/%E7%AC%AC8%E7%AB%A0-%E9%AB%98%E7%AD%89%E7%BB%9F%E8%AE%A1%E5%AD%A6/">http://example.com/2023/05/11/%E7%AC%AC8%E7%AB%A0-%E9%AB%98%E7%AD%89%E7%BB%9F%E8%AE%A1%E5%AD%A6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Cutedog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">数据科学</a></div><div class="post_share"><div class="social-share" data-image="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/05/11/%E7%AC%AC7%E7%AB%A0-%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8/" title="第7章 统计学入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">第7章 统计学入门</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/04/14/%E7%AC%AC2%E7%AB%A0-%E6%95%B0%E6%8D%AE%E7%9A%84%E7%B1%BB%E5%9E%8B/" title="第2章 数据的类型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-14</div><div class="title">第2章 数据的类型</div></div></a></div><div><a href="/2023/04/14/%E7%AC%AC3%E7%AB%A0-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%845%E4%B8%AA%E6%AD%A5%E9%AA%A4/" title="第3章 数据科学的5个步骤"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-14</div><div class="title">第3章 数据科学的5个步骤</div></div></a></div><div><a href="/2023/05/11/%E7%AC%AC4%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" title="第4章 基本的数学知识"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-11</div><div class="title">第4章 基本的数学知识</div></div></a></div><div><a href="/2023/05/11/%E7%AC%AC5%E7%AB%A0-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%A5%E9%97%A8-%E4%B8%8D%E5%8F%AF%E8%83%BD%EF%BC%8C%E8%BF%98%E6%98%AF%E4%B8%8D%E5%A4%AA%E5%8F%AF%E8%83%BD/" title="第5章 概率论入门:不可能，还是不太可能"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-11</div><div class="title">第5章 概率论入门:不可能，还是不太可能</div></div></a></div><div><a href="/2023/05/11/%E7%AC%AC7%E7%AB%A0-%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8/" title="第7章 统计学入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-11</div><div class="title">第7章 统计学入门</div></div></a></div><div><a href="/2023/05/11/%E7%AC%AC6%E7%AB%A0-%E9%AB%98%E7%AD%89%E6%A6%82%E7%8E%87%E8%AE%BA/" title="第6章 高等概率论"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-11</div><div class="title">第6章 高等概率论</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">cutedog</div><div class="author-info__description">少年侠气，交结五都雄。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.bilibili.com"><i class="fab fa-github"></i><span>摸鱼</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><p align="center">微信号：cutedog906</p></div></div><div class="xpand" style="height:200px;"></div><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
+margin: 0;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+canvas {
+display: block;
+margin: 0 auto;
+cursor: move;
+}</style><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC8%E7%AB%A0-%E9%AB%98%E7%AD%89%E7%BB%9F%E8%AE%A1%E5%AD%A6"><span class="toc-number">1.</span> <span class="toc-text">第8章 高等统计学</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-%E7%82%B9%E4%BC%B0%E8%AE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">8.1 点估计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83"><span class="toc-number">1.2.</span> <span class="toc-text">8.2 抽样分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4"><span class="toc-number">1.3.</span> <span class="toc-text">8.3 置信区间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-4-%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">1.4.</span> <span class="toc-text">8.4 假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#8-4-1-%E5%AE%9E%E6%96%BD%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">1.4.1.</span> <span class="toc-text">8.4.1 实施假设检验</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-4-2-%E5%8D%95%E6%A0%B7%E6%9C%ACt%E6%A3%80%E9%AA%8C"><span class="toc-number">1.4.2.</span> <span class="toc-text">8.4.2 单样本t检验</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-4-3-I%E5%9E%8B%E9%94%99%E8%AF%AF%E5%92%8CII%E5%9E%8B%E9%94%99%E8%AF%AF"><span class="toc-number">1.4.3.</span> <span class="toc-text">8.4.3 I型错误和II型错误</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-4-4-%E5%88%86%E7%B1%BB%E5%8F%98%E9%87%8F%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">1.4.4.</span> <span class="toc-text">8.4.4 分类变量的假设检验</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC8%E7%AB%A0-%E9%AB%98%E7%AD%89%E7%BB%9F%E8%AE%A1%E5%AD%A6/" title="第8章 高等统计学">第8章 高等统计学</a><time datetime="2023-05-11T14:54:43.000Z" title="发表于 2023-05-11 22:54:43">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC7%E7%AB%A0-%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8/" title="第7章 统计学入门">第7章 统计学入门</a><time datetime="2023-05-11T14:53:02.000Z" title="发表于 2023-05-11 22:53:02">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC6%E7%AB%A0-%E9%AB%98%E7%AD%89%E6%A6%82%E7%8E%87%E8%AE%BA/" title="第6章 高等概率论">第6章 高等概率论</a><time datetime="2023-05-11T14:49:31.000Z" title="发表于 2023-05-11 22:49:31">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC5%E7%AB%A0-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%A5%E9%97%A8-%E4%B8%8D%E5%8F%AF%E8%83%BD%EF%BC%8C%E8%BF%98%E6%98%AF%E4%B8%8D%E5%A4%AA%E5%8F%AF%E8%83%BD/" title="第5章 概率论入门:不可能，还是不太可能">第5章 概率论入门:不可能，还是不太可能</a><time datetime="2023-05-11T14:47:28.000Z" title="发表于 2023-05-11 22:47:28">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC4%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" title="第4章 基本的数学知识">第4章 基本的数学知识</a><time datetime="2023-05-11T14:45:08.000Z" title="发表于 2023-05-11 22:45:08">2023-05-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By cutedog</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script src="/js/sun_moon.js" async></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

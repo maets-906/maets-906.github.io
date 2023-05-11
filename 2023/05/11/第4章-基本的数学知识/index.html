@@ -1,0 +1,360 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>第4章 基本的数学知识 | Cutedog</title><meta name="author" content="cutedog"><meta name="copyright" content="cutedog"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第4章 基本的数学知识[toc] 4.2.1 向量和矩阵向量（vector）指既有大小又有方向的对象。对我们而言，向量是用来表示一系列数字的一维数组。换句话说，向量是一个由数字构成的列表。 向量通常用箭头或者粗体字表示，如下所示： $\vec{x}$ 或 x 向量可以被拆分为更小粒度，即向量中包含的数字。我们用索引标示法表示向量中的元素，如下所示： 当$\vec{x}$ &#x3D;$$\left(\beg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第4章 基本的数学知识">
+<meta property="og:url" content="http://example.com/2023/05/11/%E7%AC%AC4%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Cutedog">
+<meta property="og:description" content="第4章 基本的数学知识[toc] 4.2.1 向量和矩阵向量（vector）指既有大小又有方向的对象。对我们而言，向量是用来表示一系列数字的一维数组。换句话说，向量是一个由数字构成的列表。 向量通常用箭头或者粗体字表示，如下所示： $\vec{x}$ 或 x 向量可以被拆分为更小粒度，即向量中包含的数字。我们用索引标示法表示向量中的元素，如下所示： 当$\vec{x}$ &#x3D;$$\left(\beg">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg">
+<meta property="article:published_time" content="2023-05-11T14:45:08.000Z">
+<meta property="article:modified_time" content="2023-05-11T14:46:14.193Z">
+<meta property="article:author" content="cutedog">
+<meta property="article:tag" content="数据科学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/05/11/%E7%AC%AC4%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第4章 基本的数学知识',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-11 22:46:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Cutedog"><span class="site-name">Cutedog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">第4章 基本的数学知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-11T14:45:08.000Z" title="发表于 2023-05-11 22:45:08">2023-05-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-11T14:46:14.193Z" title="更新于 2023-05-11 22:46:14">2023-05-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="第4章 基本的数学知识"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="第4章-基本的数学知识"><a href="#第4章-基本的数学知识" class="headerlink" title="第4章 基本的数学知识"></a>第4章 基本的数学知识</h3><p>[toc]</p>
+<h4 id="4-2-1-向量和矩阵"><a href="#4-2-1-向量和矩阵" class="headerlink" title="4.2.1 向量和矩阵"></a>4.2.1 向量和矩阵</h4><p><strong>向量（vector）</strong>指既有大小又有方向的对象。对我们而言，向量是用来表示一系列数字的一维数组。换句话说，向量是一个由数字构成的列表。</p>
+<p>向量通常用箭头或者粗体字表示，如下所示：</p>
+<p>$\vec{x}$ 或 <strong>x</strong></p>
+<p>向量可以被拆分为更小粒度，即向量中包含的数字。我们用索引标示法表示向量中的元素，如下所示：</p>
+<p>当$\vec{x}$ =$$<br>\left(<br>\begin{matrix}<br>3 \<br>6 \<br>8<br>\end{matrix}<br>\right) \tag{1}<br>$$时，$x_1$=3 </p>
+<blockquote>
+<p>在数学中，我们通常用索引1表示第1个元素。计算机程序则通常用索引0表示第1个元素</p>
+</blockquote>
+<p>在Python中，我们有多种方式表示数组。例如可以用Python的列表表示前面的数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x=[<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>]</span><br></pre></td></tr></table></figure>
+
+<p>然而，我建议最好用numpy中的数组类型表示数组，因为它能提供更多的向量运算功能。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x=np.array([<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+
+<p>不管在Python中以何种方式表示向量，向量都为我们提供了一种存储多维单一数据点或观察值的简单方法。</p>
+<p>假设我们用0~100表示员工对每个部门的平均满意度，其中人力资源部得分57，工程部得分89，管理部得分94。</p>
+<p>我们可以用以下向量表示这一组数据：</p>
+<p><strong>x</strong>=$$<br>\left(<br>\begin{matrix}<br>x_1 \<br>x_2 \<br>x_3<br>\end{matrix}<br>\right) \tag{1}$$=$$<br>\left(<br>\begin{matrix}<br>57 \<br>89 \<br>94<br>\end{matrix}<br>\right) \tag{1}$$</p>
+<p>这个向量存储了3个不同的信息，这正是向量在数据科学中的重要用途。</p>
+<p>理论上，你也可以将向量想象成Pandas中的Series对象。所以，我们很自然地联想到DataFrame对象。事实上，以上向量只需简单扩展，就可以由一维扩展为多维。</p>
+<p><strong>矩阵（matrix）</strong>是二维数组的表示形式。矩阵有两个特征需要特别关注。矩阵的维度用n×m表示，即矩阵有n行m列。矩阵通常用大写符合、加粗斜体字表示，比如大写<strong>X</strong>。例如下面这个矩阵：<br>$$<br>\left(<br>\begin{matrix}<br>3 &amp; 4 \<br>8 &amp; 55 \<br>5 &amp; 9<br>\end{matrix}<br>\right) <br>$$<br>它有3行2列，所以是3×2矩阵。</p>
+<blockquote>
+<p>如果矩阵的行数和列数相等，则称之为<strong>正方形矩阵（square matrix）</strong>，简称方阵。</p>
+</blockquote>
+<p>矩阵通常用来存储结构化数据，它是Pandas中DataFrame类型的泛化。因此，矩阵是数据科学工具箱中最重要的数学工具。</p>
+<p>继续之前的案例，假设有3个位于不同地点的办公室，每个办公室都有人力资源部、工程部和管理部。我们可以用3个向量分别表示以上3个办公室3个部门的满意度得分，如下所示：</p>
+<p><strong>x</strong>=$$<br>\left(<br>\begin{matrix}<br>57 \<br>89 \<br>94<br>\end{matrix}<br>\right)$$,<strong>y</strong>=$$<br>\left(<br>\begin{matrix}<br>67 \<br>87 \<br>84<br>\end{matrix}<br>\right)$$,<strong>z</strong>=$$<br>\left(<br>\begin{matrix}<br>65 \<br>98 \<br>60<br>\end{matrix}<br>\right)$$ </p>
+<p>然而，这样的表示方式不但难以处理，而且不具有扩展性。如果我们有100个办公室，就需要100个不同的数组存储信息。矩阵恰好能解决这一问题。我们可以创建一个3×3矩阵，每一行代表不同的部门，每一列代表不同的办公室。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>办公室1</th>
+<th>办公室2</th>
+<th>办公室3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>人力资源部</td>
+<td>57</td>
+<td>67</td>
+<td>65</td>
+</tr>
+<tr>
+<td>工程部</td>
+<td>89</td>
+<td>87</td>
+<td>98</td>
+</tr>
+<tr>
+<td>管理部</td>
+<td>94</td>
+<td>84</td>
+<td>60</td>
+</tr>
+</tbody></table>
+<p>这样看起来更加自然。我们去掉行标签和列标签之后，剩下的数字就组成了一个真正的矩阵。</p>
+<p><strong>X</strong>=$$<br>\begin{pmatrix}<br>57 &amp; 67 &amp; 65 \<br>89 &amp; 87 &amp; 98 \<br>94 &amp; 84 &amp; 60<br>\end{pmatrix}$$ </p>
+<p><strong>快速练习</strong></p>
+<p>（1）如果增加第4个办公室，矩阵需要增加1行，还是增加1列？</p>
+<p>（2）增加第4个办公室后，矩阵的维度是多少？</p>
+<p>（3）如果在最初的矩阵<strong>X</strong>中去除“管理部”的数据，新矩阵的维度是什么？</p>
+<p>（4）计算矩阵所含元素数量的通用公式是什么？</p>
+<p><strong>答案</strong></p>
+<p>（1）增加1列。</p>
+<p>（2）3×4</p>
+<p>（3）2×3</p>
+<p>（4）n×m，其中n为矩阵行数，m为矩阵列数。</p>
+<h4 id="4-2-2-算术符号"><a href="#4-2-2-算术符号" class="headerlink" title="4.2.2 算术符号"></a>4.2.2 算术符号</h4><h5 id="点积"><a href="#点积" class="headerlink" title="点积"></a>点积</h5><p><strong>点积（dot product）</strong>是类似于加法和乘法的运算符，通常用来合并两个向量，如下所示：<br>$$<br>\begin{pmatrix}<br>3\<br>7<br>\end{pmatrix}<br> ·<br>\begin{pmatrix}<br>9\<br>5<br>\end{pmatrix}=3×9+7×5=62<br>$$</p>
+<blockquote>
+<p>点积的结果是一个单一的数值，称为<strong>标量（scalar）</strong>。</p>
+</blockquote>
+<p>这有何用途呢？假设我们用向量表示用户对喜剧、言情剧和动作片3种不同类型电影的喜欢程度，取值范围1~5。</p>
+<p>假设某用户喜欢喜剧，不喜欢言情剧，对动作片不喜欢也不讨厌，那么用向量表示如下：<br>$$<br>\begin{pmatrix}<br>5\<br>1\<br>3<br>\end{pmatrix}<br>$$<br>其中：</p>
+<ul>
+<li>5表示喜欢喜剧；</li>
+<li>1表示不喜欢言情剧；</li>
+<li>3表示不喜欢也不讨厌动作片。</li>
+</ul>
+<p>现在，假设有两部电影，一部是言情喜剧片，一部是喜剧动作片。每部电影同样有自己的特征向量，如下所示：</p>
+<p><strong>$$m_1$$</strong>=$$<br>\left(<br>\begin{matrix}<br>4 \<br>5 \<br>1<br>\end{matrix}<br>\right)$$,<strong>$$m_2$$</strong>=$$<br>\left(<br>\begin{matrix}<br>5 \<br>1 \<br>5<br>\end{matrix}<br>\right)$$ </p>
+<p>其中，$m_1$是言情喜剧片，$m_2$是喜剧动作片。</p>
+<p>为了决定向用户推荐哪部电影，我们使用点积将用户的偏好向量和每部电影的特征向量相乘，乘积最高的电影将被推荐给用户。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230315173117096.png" alt="image-20230315173117096"> </p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230315173258184.png" alt="image-20230315173258184"></p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230315173324662.png" alt="image-20230315173324662"></p>
+<h4 id="4-2-3-图表"><a href="#4-2-3-图表" class="headerlink" title="4.2.3 图表"></a>4.2.3 图表</h4><h5 id="斜率"><a href="#斜率" class="headerlink" title="斜率"></a>斜率</h5><p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230315174020847.png" alt="image-20230315174020847"></p>
+<p>斜率=m=$ {y_2-y_1 \over x_2-x_1} $</p>
+<p>斜率指两点之间的<strong>变化比率（rate of change）</strong>。变化比率在数据科学种非常重要，特别是在涉及微分方程和微积分运算时。</p>
+<p>变化比率是表示变量如何同时变化，以及变化程度的指标。假设我们为咖啡温度和时间建模，得到的变化比率是：</p>
+<p>$- {2℉ \over 1min} $</p>
+<p>这个变化比率指咖啡温度每分钟下降2℉。</p>
+<h4 id="4-2-4-指数-对数"><a href="#4-2-4-指数-对数" class="headerlink" title="4.2.4 指数/对数"></a>4.2.4 指数/对数</h4><p><strong>指数（exponent）</strong>指数字和自身相乘的次数。</p>
+<p>$$2^4$$=2 · 2 · 2 · 2=16</p>
+<p>2是底数，4是指数</p>
+<p><strong>对数（logarithm）</strong>则用于回答“以A数为底（base）得到B的指数是多少？”</p>
+<p>$\log_2(16)$=4</p>
+<p>2是底数，4是对数</p>
+<p><strong>如果你发现这两个概念非常接近，那就对了！</strong>事实上，对数和指数高度相关，对数即指数。以上两个公式是同一个事物的两种表示方式，其核心思想是2×2×2×2=16。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230315180750262.png" alt="image-20230315180750262"></p>
+<p>另外，对数和指数在计算增长率时也特别有用。大部分时候，指数和对数可以帮助我们对数量的增长趋势进行建模。</p>
+<p>常数e约等于2.718，它在实践中具有很强的实用性。最常见的例子是计算资金的增长情况。假设银行账户有5000美元，以年化利率3%进行增长。我们使用以下公式对存款余额进行建模：<br>$$<br>A=Pe^{rt}<br>$$<br>其中：</p>
+<ul>
+<li>A为最终的存款金额；</li>
+<li>P为初始投资金额（5000美元）；</li>
+<li>e为常数（2.718）；</li>
+<li>r为年化增长率（0.03）；</li>
+<li>t为时间（单位：年）。</li>
+</ul>
+<p>我们非常好奇账户余额需要多长时间才能翻倍？用公式表示如下：<br>$$<br>10000=5000e^{0.03t}<br>$$<br>等价于求解：<br>$$<br>2=e^{0.03t}(两边都除以5000)<br>$$<br><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230315181542765.png" alt="image-20230315181542765"></p>
+<h4 id="4-2-5-集合论"><a href="#4-2-5-集合论" class="headerlink" title="4.2.5 集合论"></a>4.2.5 集合论</h4><p><strong>集合论（set theory）</strong>指面向集合对象的数学运算，它被认为是其他数学原理和定理的根基之一。对我们而言，集合论主要用来处理包含大量元素的群体。</p>
+<p><strong>集合是由一组不重复对象构成的群体</strong>，仅此而已！集合可以被看作Python中的列表，但不含重复对象。事实上，在Python中甚至有专门的set对象。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s=<span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line">s=<span class="built_in">set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>])</span><br><span class="line"><span class="comment">#will remove duplicates from a list</span></span><br><span class="line"></span><br><span class="line">s==&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在Python中，花括号{}既可以指<strong>集合（set）</strong>，也可以指<strong>字典（dictionary）</strong>。字典由键和键值成对组成，比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dict</span>=&#123;<span class="string">&quot;dog&quot;</span>:<span class="string">&quot;human&#x27;s best friend&quot;</span>,<span class="string">&quot;cat&quot;</span>:<span class="string">&quot;destroyer of world&quot;</span>&#125;</span><br><span class="line"><span class="built_in">dict</span>[<span class="string">&quot;dog&quot;</span>] <span class="comment">#==&quot;human&#x27;s best friend&quot;</span></span><br><span class="line"><span class="built_in">len</span>(<span class="built_in">dict</span>[<span class="string">&quot;cat&quot;</span>]) <span class="comment">#==18</span></span><br><span class="line"><span class="comment">#but if we try to create a pair with the same key as an existing key</span></span><br><span class="line"><span class="built_in">dict</span>[<span class="string">&quot;dog&quot;</span>]=<span class="string">&quot;Arf&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">dict</span></span><br><span class="line">&#123;<span class="string">&quot;dog&quot;</span>:<span class="string">&quot;Arf&quot;</span>,<span class="string">&quot;cat&quot;</span>:<span class="string">&quot;destroyer of world&quot;</span>&#125;</span><br><span class="line"><span class="comment">#It will override the previous value</span></span><br><span class="line"><span class="comment">#dictionaries cannot have two values for one key.</span></span><br></pre></td></tr></table></figure>
+
+<p>字典和集合共用同样的符号，是因为它们具有同样的特性：集合不可以用重复项，正如字典不可以有重复键一样。</p>
+<p>集合的<strong>大小（magnitude）</strong>是一个描述集合所含元素数量的值，表示方式为：|A|=A的大小</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s <span class="comment">#==&#123;1,2,3&#125;</span></span><br><span class="line"><span class="built_in">len</span>(s) <span class="comment">#==3 magnitude of s</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>集合可以为空，用符号Ø表示。空集的大小为零。</p>
+</blockquote>
+<p>我们使用符号∈表示某个元素包含在集合中，如下所示：<br>$$<br>2∈{1,2,3}<br>$$<br>2包含在由1、2和3组成的集合中。如果一个集合包含在另一个集合中，我们称第1个集合是第2集合的子集。<br>$$<br>A={1,5,6},B={1,5,6,7,8}<br>\<br>A\subseteq B<br>$$<br>A是B的子集，B是A的超集。如果A是B的子集且A不等于B（即B中至少有一个元素不包含在A中），那么A是B的真子集。以下是集合的例子：</p>
+<ul>
+<li>偶数集合是整数集合的子集；</li>
+<li>每个集合都是自身的子集，但不是真子集；</li>
+<li>由所有推文构成的集合是由所有英文推文构成集合的超集。</li>
+</ul>
+<p>在数据科学中，我们用集合（或者列表）表示一系列对象，很多时候用来归纳用户的行为。事实上，这种方式非常常见。</p>
+<p>假设一家营销公司想预测客户将购买哪个品牌的衣服。我们有客户历史上购买衣服的品牌信息，我们的目标是预测该客户会喜欢的新品牌。假设1个客户曾购买过Target、Banana Republic和Old Navy，在Python中表示如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user1=&#123;<span class="string">&quot;Target&quot;</span>,<span class="string">&quot;Banana Republic&quot;</span>,<span class="string">&quot;Old Navy&quot;</span>&#125;</span><br><span class="line"><span class="comment">#note that we use &#123;&#125; notation to create a set</span></span><br><span class="line"><span class="comment">#compare that to using [] to make a list</span></span><br></pre></td></tr></table></figure>
+
+<p>请注意，我们在以上代码中使用{}符号创建一个集合，而不是用[]符号创建一个列表。</p>
+<p>第2个客户购买过的品牌有：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user2=&#123;<span class="string">&quot;Banana Republic&quot;</span>,<span class="string">&quot;Gap&quot;</span>,<span class="string">&quot;Kohl&#x27;s&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们希望知道这两个客户的相似程度。根据目前有限的信息，我们可以将相似性定义为两个客户都购买过的品牌有哪些，这被称为<strong>交集（intersection）</strong>。</p>
+<p>两个集合的交集指由同时出现在两个集合中的元素组成的集合，用符号$$\cap$$表示，如下所示：<br>$$<br>user1 \cap user2={Banana Republic}<br>\<br>|user1 \cap user2|=1<br>$$<br>以上两个用户的交集只有1个，看起来好像并不是特别棒。但是，考虑到每个集合仅有3个元素，1/3的相似度似乎也并不坏。</p>
+<p>如果我们想知道两个客户总共购买过的品牌有哪些，这称之为<strong>并集（union）</strong>。</p>
+<p>两个集合的并集指由两个集合中所有元素组成的集合，用符号$$\cup$$表示，如下所示：<br>$$<br>user1 \cup user2={Banana\ Republic,Target,Old\ Navy,Gap,Kohl’s}<br>\<br>|user1 \cup user2|=5<br>$$<br>当我们计算user1和user2的相似度时，应同时使用交集和并集。user1和user2的交集有1个元素，并集有5个元素。所以，我们可以定义两者的相似度为：<br>$$<br>{|user1 \cap user2|\over|user1 \cup user2|}={1\over5}=0.2<br>$$<br>事实上，在集合理论中它有一个正式的名字，叫<strong>杰卡德相似度（jaccard similarity）</strong>。</p>
+<p>对于集合A和B，两者的杰卡德相似度为：<br>$$<br>JS(A,B)={|A \cap B|\over|A \cup B|}<br>$$<br>从以上公式不难发现，杰卡德相似度也可以被定义为交集的大小除以并集的大小。</p>
+<p>杰卡德相似度为我们提供了一种量化集合相似性的方法。</p>
+<p>根据直觉，我们推测杰卡德相似度的值介于0~1，当相似度接近0时表示几乎没有共性，当相似度接近1时表示客户相似性最高。如果我们仔细考虑一下它的定义，这个推测就显得更加合理：<br>$$<br>JS(A,B)={两个客户都买过的品牌数量\over两个客户总共买过的品牌数量}<br>$$<br>以上内容在Python中表示如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">user1=&#123;<span class="string">&quot;Target&quot;</span>,<span class="string">&quot;Banana Republic&quot;</span>,<span class="string">&quot;Old Navy&quot;</span>&#125;</span><br><span class="line">user2=&#123;<span class="string">&quot;Banana Republic&quot;</span>,<span class="string">&quot;Gap&quot;</span>,<span class="string">&quot;Kohl&#x27;s&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">jaccard</span>(<span class="params">user1,user2</span>):</span><br><span class="line">    <span class="comment">#用&amp;计算交集，用|计算并集</span></span><br><span class="line">    stores_in_common=<span class="built_in">len</span>(user1 &amp; user2)</span><br><span class="line">    stores_all_together=<span class="built_in">len</span>(user1 | user2)</span><br><span class="line">    <span class="keyword">return</span> stores_in_common/<span class="built_in">float</span>(stores_all_together)</span><br><span class="line"></span><br><span class="line"><span class="comment">#I cast stores_all)together as a float to return a decimal answer</span></span><br><span class="line"><span class="comment">#instead of python&#x27;s default integer division</span></span><br><span class="line"></span><br><span class="line">jaccard(user1,user2) <span class="comment">#==0.2 or 1/5</span></span><br></pre></td></tr></table></figure>
+
+<p>当我们开始学习概率论处理多维数据时，集合论的应用将越来越广泛。我们使用集合表示现实世界发生的各种事件。</p>
+<h4 id="4-3-线性代数"><a href="#4-3-线性代数" class="headerlink" title="4.3 线性代数"></a>4.3 线性代数</h4><p>还记得之前的电影推荐引擎吗？如果我们要从10000部电影中选出10部推荐给用户，需要怎么办呢？我们需要将每个用户的简历和10000部电影分别计算点积。<strong>线性代数（linear algebra）</strong>为我们提供了更高效的计算工具。</p>
+<p>线性代数是计算矩阵和向量的一个数学分支。它通过对计算对象进行分解和重构，增强了实用性。下面我们介绍几个线性代数的处理规则。</p>
+<h5 id="矩阵乘积"><a href="#矩阵乘积" class="headerlink" title="矩阵乘积"></a>矩阵乘积</h5><p>和数值乘积类似，我们也可以对矩阵进行乘积运算。本质上，矩阵乘积是同时进行大量点积运算的过程。以下面这两个矩阵乘积为例：<br>$$<br>\begin{pmatrix}<br>1 &amp; 5\<br>5 &amp; 8\<br>7 &amp; 8<br>\end{pmatrix}·<br>\begin{pmatrix}<br>3 &amp; 4\<br>2 &amp; 5 \<br>\end{pmatrix}<br>$$<br>需要注意的是：</p>
+<ul>
+<li><strong>矩阵乘积不支持交换律，矩阵相乘的顺序影响着最终结果，这一点和数值乘积有所区别。</strong></li>
+<li><strong>为了对矩阵进行乘积，矩阵的维度必须匹配。第1个矩阵的列数必须和第2个矩阵的行数一致。</strong></li>
+</ul>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230317090905544.png" alt="image-20230317090905544"></p>
+<h5 id="矩阵如何相乘"><a href="#矩阵如何相乘" class="headerlink" title="矩阵如何相乘"></a>矩阵如何相乘</h5><p>本质上，矩阵乘积是进行一系列点积的过程。有一个简单的方法计算矩阵乘积。回到之前的例子：<br>$$<br>\begin{pmatrix}<br>1 &amp; 5\<br>5 &amp; 8\<br>7 &amp; 8<br>\end{pmatrix}·<br>\begin{pmatrix}<br>3 &amp; 4\<br>2 &amp; 5 \<br>\end{pmatrix}<br>$$<br>我们已经知道矩阵乘积的结果是一个3×2的新矩阵，新矩阵的样子如下：<br>$$<br>\begin{pmatrix}<br>m_{11} &amp; m_{12} \<br>m_{21} &amp; m_{22} \<br>m_{31} &amp; m_{32}<br>\end{pmatrix}<br>$$</p>
+<blockquote>
+<p>请注意，新矩阵的每个元素都有下标，第1个数字表示行号，第2个数字表示列号。$$m_{32}$$指第3行第2列的元素。</p>
+</blockquote>
+<p>新矩阵的每个元素都是原矩阵对应行和列的点积。比如$m_{xy}$是第1个矩阵x行和第2个矩阵y列的点积，如下所示：<br>$$<br>m_{11}=(1,5)·\begin{pmatrix}<br>3\<br>2\<br>\end{pmatrix}=13<br>\<br>m_{12}=(1,5)·\begin{pmatrix}<br>4\<br>5\<br>\end{pmatrix}=29<br>$$<br>以此类推，我们将得到乘积后的新矩阵：<br>$$<br>\begin{pmatrix}<br>13 &amp; 29\<br>31 &amp; 60\<br>37 &amp; 68\<br>\end{pmatrix}<br>$$<br>回到电影推荐的案例。我们已经知道用户对喜剧、言情剧和动作片的偏好是：<br>$$<br>U=用户偏好=\begin{pmatrix}<br>5\<br>1\<br>3<br>\end{pmatrix}<br>$$<br>假设我们有10000部电影，每部电影都有喜剧、言情剧和动作片3个特征值。为了给用户推荐电影，我们需要将用户的偏好向量和10000部电影的特征向量进行乘积。我们可以用矩阵乘积表示。</p>
+<p>我们用矩阵符号表示以上矩阵，而不是将10000个矩阵都列出来。我们已经有了表示用户偏好的向量U（可以被看作3×1矩阵），以及所有电影组成的3×10000维度的矩阵：<br>$$<br>M=3×10000维度矩阵<br>$$<br>现在，我们有两个矩阵：一个是3×1，另一个是3×10000。由于这两个矩阵维度不满足相乘条件，所以无法直接相乘。我们需要对矩阵U进行<strong>转置（transpose）</strong>，即行转为列，列转为行。转置后的新矩阵如下：<br>$$<br>U^T=U的转置=(5,1,3)<br>$$<br><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230317092946997.png" alt="image-20230317092946997"></p>
+<p>下面在Python中完成以上内容。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment">#create user preferences</span></span><br><span class="line">user_pref=np.array([<span class="number">5</span>,<span class="number">1</span>,<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#create a random movie matrix of 10000 movies</span></span><br><span class="line">movies=np.random.randint(<span class="number">5</span>,size=(<span class="number">3</span>,<span class="number">10000</span>))+<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Note that the randint will make random integers from 0-4</span></span><br><span class="line"><span class="comment">#so I added a 1 at the end to increase the scale from 1-5</span></span><br></pre></td></tr></table></figure>
+
+<p>我们使用numpy模块的array函数创建矩阵，user_pref和movies是我们得到的数据。我们使用numpy模块的shape方法检查矩阵的维度，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(user_pref.shape)  <span class="comment">#(1,3)</span></span><br><span class="line"><span class="built_in">print</span>(movies.shape)     <span class="comment">#(3,10000)</span></span><br></pre></td></tr></table></figure>
+
+<p>矩阵维度正确。下面我们继续使用numpy模块计算两个矩阵的乘积：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#np.dot does both dot products and matrix multiplication</span></span><br><span class="line">np.dot(user_pref,movies)</span><br></pre></td></tr></table></figure>
+
+<p>计算结果是一个由整数组成的数组，每一个值表示对应电影的推荐指数。</p>
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230317094347169.png" alt="image-20230317094347169"></p>
+<p>下面我们对本例进行扩展，计算推荐超过10000部电影所需的时间。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> num_movies <span class="keyword">in</span> (<span class="number">10000</span>,<span class="number">100000</span>,<span class="number">1000000</span>,<span class="number">10000000</span>,<span class="number">100000000</span>):</span><br><span class="line">    movies=np.random.randint(<span class="number">5</span>,size=(<span class="number">3</span>,num_movies))+<span class="number">1</span></span><br><span class="line">    now=time.time()</span><br><span class="line">    np.dot(user_pref,movies)</span><br><span class="line">    <span class="built_in">print</span>(time.time()-now,<span class="string">&quot;seconds to run&quot;</span>,num_movies,<span class="string">&quot;movies&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/image-20230317094507489.png" alt="image-20230317094507489"></p>
+<blockquote>
+<p>我在jupyter notebook上的运行结果如下</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.0</span> seconds to run <span class="number">10000</span> movies</span><br><span class="line"><span class="number">0.0</span> seconds to run <span class="number">100000</span> movies</span><br><span class="line"><span class="number">0.004986286163330078</span> seconds to run <span class="number">1000000</span> movies</span><br><span class="line"><span class="number">0.05382490158081055</span> seconds to run <span class="number">10000000</span> movies</span><br><span class="line"><span class="number">0.5453550815582275</span> seconds to run <span class="number">100000000</span> movies</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">cutedog</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/05/11/%E7%AC%AC4%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/">http://example.com/2023/05/11/%E7%AC%AC4%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Cutedog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">数据科学</a></div><div class="post_share"><div class="social-share" data-image="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/11/%E7%AC%AC5%E7%AB%A0-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%A5%E9%97%A8-%E4%B8%8D%E5%8F%AF%E8%83%BD%EF%BC%8C%E8%BF%98%E6%98%AF%E4%B8%8D%E5%A4%AA%E5%8F%AF%E8%83%BD/" title="第5章 概率论入门:不可能，还是不太可能"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">第5章 概率论入门:不可能，还是不太可能</div></div></a></div><div class="next-post pull-right"><a href="/2023/04/14/%E7%AC%AC3%E7%AB%A0-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%845%E4%B8%AA%E6%AD%A5%E9%AA%A4/" title="第3章 数据科学的5个步骤"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">第3章 数据科学的5个步骤</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/04/14/%E7%AC%AC2%E7%AB%A0-%E6%95%B0%E6%8D%AE%E7%9A%84%E7%B1%BB%E5%9E%8B/" title="第2章 数据的类型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-14</div><div class="title">第2章 数据的类型</div></div></a></div><div><a href="/2023/04/14/%E7%AC%AC3%E7%AB%A0-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%845%E4%B8%AA%E6%AD%A5%E9%AA%A4/" title="第3章 数据科学的5个步骤"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-14</div><div class="title">第3章 数据科学的5个步骤</div></div></a></div><div><a href="/2023/05/11/%E7%AC%AC5%E7%AB%A0-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%A5%E9%97%A8-%E4%B8%8D%E5%8F%AF%E8%83%BD%EF%BC%8C%E8%BF%98%E6%98%AF%E4%B8%8D%E5%A4%AA%E5%8F%AF%E8%83%BD/" title="第5章 概率论入门:不可能，还是不太可能"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-11</div><div class="title">第5章 概率论入门:不可能，还是不太可能</div></div></a></div><div><a href="/2023/05/11/%E7%AC%AC7%E7%AB%A0-%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8/" title="第7章 统计学入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-11</div><div class="title">第7章 统计学入门</div></div></a></div><div><a href="/2023/05/11/%E7%AC%AC6%E7%AB%A0-%E9%AB%98%E7%AD%89%E6%A6%82%E7%8E%87%E8%AE%BA/" title="第6章 高等概率论"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-11</div><div class="title">第6章 高等概率论</div></div></a></div><div><a href="/2023/04/14/%E7%AC%AC1%E7%AB%A0-%E5%A6%82%E4%BD%95%E5%90%AC%E8%B5%B7%E6%9D%A5%E5%83%8F%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%B6/" title="第1章 如何听起来像数据科学家"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-14</div><div class="title">第1章 如何听起来像数据科学家</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://picgo-1309174103.cos.ap-beijing.myqcloud.com/myavatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">cutedog</div><div class="author-info__description">少年侠气，交结五都雄。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.bilibili.com"><i class="fab fa-github"></i><span>摸鱼</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><p align="center">微信号：cutedog906</p></div></div><div class="xpand" style="height:200px;"></div><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
+margin: 0;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+canvas {
+display: block;
+margin: 0 auto;
+cursor: move;
+}</style><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">第4章 基本的数学知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E5%90%91%E9%87%8F%E5%92%8C%E7%9F%A9%E9%98%B5"><span class="toc-number">1.1.</span> <span class="toc-text">4.2.1 向量和矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-%E7%AE%97%E6%9C%AF%E7%AC%A6%E5%8F%B7"><span class="toc-number">1.2.</span> <span class="toc-text">4.2.2 算术符号</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%82%B9%E7%A7%AF"><span class="toc-number">1.2.1.</span> <span class="toc-text">点积</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-%E5%9B%BE%E8%A1%A8"><span class="toc-number">1.3.</span> <span class="toc-text">4.2.3 图表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%9C%E7%8E%87"><span class="toc-number">1.3.1.</span> <span class="toc-text">斜率</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-4-%E6%8C%87%E6%95%B0-%E5%AF%B9%E6%95%B0"><span class="toc-number">1.4.</span> <span class="toc-text">4.2.4 指数&#x2F;对数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-5-%E9%9B%86%E5%90%88%E8%AE%BA"><span class="toc-number">1.5.</span> <span class="toc-text">4.2.5 集合论</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="toc-number">1.6.</span> <span class="toc-text">4.3 线性代数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E7%A7%AF"><span class="toc-number">1.6.1.</span> <span class="toc-text">矩阵乘积</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%A6%82%E4%BD%95%E7%9B%B8%E4%B9%98"><span class="toc-number">1.6.2.</span> <span class="toc-text">矩阵如何相乘</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC8%E7%AB%A0-%E9%AB%98%E7%AD%89%E7%BB%9F%E8%AE%A1%E5%AD%A6/" title="第8章 高等统计学">第8章 高等统计学</a><time datetime="2023-05-11T14:54:43.000Z" title="发表于 2023-05-11 22:54:43">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC7%E7%AB%A0-%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%85%A5%E9%97%A8/" title="第7章 统计学入门">第7章 统计学入门</a><time datetime="2023-05-11T14:53:02.000Z" title="发表于 2023-05-11 22:53:02">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC6%E7%AB%A0-%E9%AB%98%E7%AD%89%E6%A6%82%E7%8E%87%E8%AE%BA/" title="第6章 高等概率论">第6章 高等概率论</a><time datetime="2023-05-11T14:49:31.000Z" title="发表于 2023-05-11 22:49:31">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC5%E7%AB%A0-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%A5%E9%97%A8-%E4%B8%8D%E5%8F%AF%E8%83%BD%EF%BC%8C%E8%BF%98%E6%98%AF%E4%B8%8D%E5%A4%AA%E5%8F%AF%E8%83%BD/" title="第5章 概率论入门:不可能，还是不太可能">第5章 概率论入门:不可能，还是不太可能</a><time datetime="2023-05-11T14:47:28.000Z" title="发表于 2023-05-11 22:47:28">2023-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/11/%E7%AC%AC4%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" title="第4章 基本的数学知识">第4章 基本的数学知识</a><time datetime="2023-05-11T14:45:08.000Z" title="发表于 2023-05-11 22:45:08">2023-05-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By cutedog</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script src="/js/sun_moon.js" async></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
